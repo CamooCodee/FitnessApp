@@ -5,7 +5,7 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637609069710087929
+      ticks: 637609074517224070
     m_Hash: 1848782840
   m_LockFileStatus:
     m_FilePath: X:/UnityProjekte/Commercial/FitnessApp/Unity/FitnessApp/Packages/packages-lock.json
@@ -13,7 +13,7 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637609069784225940
+      ticks: 637609074587583581
     m_Hash: 4215650928
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
