@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace FitnessApp.BackEnd
 {
-    public class Pause : IWorkoutElement
+    public class Pause : IWorkoutElement, IFollowAlongElement
     {
         public int Length { get; private set; }
         private event Action OnElementEnd;
@@ -35,6 +35,11 @@ namespace FitnessApp.BackEnd
         public string GetElementInformation()
         {
             return $"A {Length} seconds pause!";
+        }
+
+        public IFollowAlongElement[] SplitElement()
+        {
+            return new[] { this };
         }
 
         public void StartListeningForElementEnding(Action func)
