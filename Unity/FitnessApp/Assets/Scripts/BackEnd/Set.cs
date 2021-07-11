@@ -1,7 +1,4 @@
-﻿using System;
-using UnityEngine;
-
-namespace FitnessApp.BackEnd
+﻿namespace FitnessApp.BackEnd
 {
     public class Set : IWorkoutElement
     { 
@@ -16,7 +13,7 @@ namespace FitnessApp.BackEnd
             Repetitions = repetitions;
         }
 
-        public IFollowAlongElement[] SplitElement()
+        public IFollowAlongElement[] SplitForFollowAlongMode()
         {
             var elements = new IFollowAlongElement[2 * Repetitions - 1];
 

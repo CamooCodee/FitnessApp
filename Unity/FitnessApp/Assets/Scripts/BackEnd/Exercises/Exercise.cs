@@ -5,7 +5,7 @@ namespace FitnessApp.BackEnd
 {
     public class Exercise
     {
-        private List<IPerformanceComponent> _performanceComponents;
+        public List<IPerformanceComponent> PerformanceComponents { get; private set; }
 
         public string Name { get; private set; }
         public string Notes { get; private set; }
@@ -14,27 +14,27 @@ namespace FitnessApp.BackEnd
         {
             Name = name;
             Notes = notes;
-            _performanceComponents = new List<IPerformanceComponent>();
+            PerformanceComponents = new List<IPerformanceComponent>();
         }
         
         public void AddPerformanceComponent(IPerformanceComponent component)
         {
             if (AlreadyHasPerformanceComponentOfType(component.GetType())) return;
-            _performanceComponents.Add(component);
+            PerformanceComponents.Add(component);
         }
         public void RemovePerformanceComponent(IPerformanceComponent component)
         {
-            if (!_performanceComponents.Contains(component)) return;
-            _performanceComponents.Remove(component);
+            if (!PerformanceComponents.Contains(component)) return;
+            PerformanceComponents.Remove(component);
         }
 
         bool AlreadyHasPerformanceComponentOfType(Type t)
         {
             if (t == null) return false;
             
-            for (int i = 0; i < _performanceComponents.Count; i++)
+            for (int i = 0; i < PerformanceComponents.Count; i++)
             {
-                if (_performanceComponents[i].GetType() == t) return true;
+                if (PerformanceComponents[i].GetType() == t) return true;
             }
 
             return false;

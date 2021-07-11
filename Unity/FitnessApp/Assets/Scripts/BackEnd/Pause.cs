@@ -17,8 +17,6 @@ namespace FitnessApp.BackEnd
 
         public void StartElement()
         {
-            Debug.Log("Started!");
-
             _timeLeft = Length;
             
             UnityEventFunctionGlobalizer.GlobalUpdate += Update;
@@ -37,7 +35,7 @@ namespace FitnessApp.BackEnd
             return $"A {Length} seconds pause!";
         }
 
-        public IFollowAlongElement[] SplitElement()
+        public IFollowAlongElement[] SplitForFollowAlongMode()
         {
             return new[] { this };
         }
