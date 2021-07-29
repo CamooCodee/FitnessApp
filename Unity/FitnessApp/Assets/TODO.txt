@@ -1,2 +1,0 @@
-﻿Replace "Types" in context of the exercise-performance(-modifications) with an enum.
-Replace timers wit injected objects so they can be controlled outside of the different classes.
