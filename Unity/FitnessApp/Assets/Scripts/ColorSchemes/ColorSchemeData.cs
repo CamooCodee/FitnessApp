@@ -1,4 +1,6 @@
 ﻿using System;
+using FitnessApp;
+using UnityEngine;
 
 namespace ColorSchemes
 {
@@ -6,24 +8,27 @@ namespace ColorSchemes
     public class ColorSchemeData
     {
         public ColorScheme colorScheme;
+        [SerializeField]
+        private int selectedColorIndex = 0;
 
-        private ColorSchemeColor _color;
-        public ColorSchemeColor Color
+        public int GetSelectedColorIndex()
         {
-            get
-            {
-                if(colorScheme == null) throw new NullReferenceException("The Color Scheme has to be set in order to receive a belonging color.");
-                if (_color == null)
-                {
-                    _color = colorScheme.GetDefaultColor();
-                }
-                return _color;
-            }
-            set
-            {
-                if(!colorScheme.ContainsColor(value)) return;
-                _color = value;
-            }
+            return selectedColorIndex;
+        }
+
+        public void SelectColor(int index)
+        {
+            if (index < 0 || index >= colorScheme.ColorCount)
+                throw new Exception("Can't set color with an invalid index!");
+
+            selectedColorIndex = index;
+        }
+        
+        public Color GetSelectedColor()
+        {
+            var schemeColor = colorScheme.GetColor(selectedColorIndex);
+            if(schemeColor == null) throw new Exception($"Can't work with received Scheme Color. It's null.");
+            return colorScheme.GetColor(selectedColorIndex).color;
         }
     }
 }

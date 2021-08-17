@@ -1,7 +1,9 @@
-﻿namespace ColorSchemes
+﻿using FitnessApp;
+
+namespace ColorSchemes
 {
-    public interface IColorSchemeEventArgs
+    public interface IColorSchemeEventArgs : ISettingsEventArgs
     {
-        
+        ColorScheme GetScheme();
     }
 }

@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colors:
   - tag: Light
-    color: {r: 0.2947668, g: 0.59877956, b: 0.9056604, a: 1}
+    color: {r: 0.3443396, g: 0.6692425, b: 1, a: 1}
   - tag: Dark
-    color: {r: 0.14404595, g: 0.46203244, b: 0.7830189, a: 1}
+    color: {r: 0.19530971, g: 0.45927224, b: 0.7264151, a: 1}
+  - tag: Text
+    color: {r: 1, g: 1, b: 1, a: 1}

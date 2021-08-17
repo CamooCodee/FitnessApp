@@ -1,4 +1,4 @@
-﻿namespace DefaultNamespace
+﻿namespace FitnessApp
 {
     public interface ISettingsEventArgs
     {

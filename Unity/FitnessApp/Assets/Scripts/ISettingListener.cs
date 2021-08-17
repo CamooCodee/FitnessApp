@@ -1,7 +1,11 @@
-﻿namespace DefaultNamespace
+﻿using UnityEngine;
+
+namespace FitnessApp
 {
-    public interface ISettingListener
+    public interface ISettingListener<T> where T : ISettingsEventArgs
     {
-        
+        void Execute(T args);
+        bool IsMonoBehaviour();
+        Transform GetTransform();
     }
 }

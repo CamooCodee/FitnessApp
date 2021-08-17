@@ -1,25 +1,76 @@
-using System;
+﻿using System;
+using FitnessApp;
 using UnityEngine;
 
-namespace FitnessApp.ColorSchemes
+namespace ColorSchemes
 {
-    public abstract class ColorSchemeMonoBehaviour : MonoBehaviour
+    [DefaultExecutionOrder(-1)]
+    public abstract class ColorSchemeMonoBehaviour : MonoBehaviour, ISettingListener<IColorSchemeEventArgs>
     {
-        private static ColorScheme globalColorScheme;
-        private static Action<ColorScheme> onGlobalColorSchemeChange;
+        public static ISetting<IColorSchemeEventArgs> GlobalSetting { get; private set; }
+        private bool _canBeAutoAssigned = true;
 
-        public static void SetGlobalColorScheme(ColorScheme scheme, bool force = false)
+        private void Awake()
         {
-            if(!force && globalColorScheme == scheme) return;
-            globalColorScheme = scheme;
-            onGlobalColorSchemeChange?.Invoke(scheme);
+            _canBeAutoAssigned = false;
+            GlobalSetting = null;
         }
 
-        protected void Init()
+        protected virtual void Setup()
         {
-            onGlobalColorSchemeChange += SetColorScheme;
+            ListenForSettingsUpdate();
+            _canBeAutoAssigned = false;
         }
-        
-        protected abstract void SetColorScheme(ColorScheme scheme);
+        protected virtual void Teardown()
+        {
+            StopListeningForSettingsUpdated();
+            _canBeAutoAssigned = true;
+        }
+
+        public static bool TryToActAsSettingsObject(ISetting<IColorSchemeEventArgs> setting, bool forceOverwrite = false)
+        {
+            if (GlobalSetting == null || forceOverwrite)
+            {
+                bool ret = false;
+                
+                if (GlobalSetting == null || GlobalSetting.Equals(setting)) ret = true;
+
+                GlobalSetting = setting;
+                return ret;
+            }
+
+            if (GlobalSetting.Equals(setting)) return true;
+            return false;
+        }
+
+        protected void ListenForSettingsUpdate()
+        {
+            if (GlobalSetting != null)
+            {
+                GlobalSetting.AddListenerForSettingsUpdate(this);
+            }
+            else Debug.LogWarning("Didn't add listener due to missing setting.");
+        }
+        protected void StopListeningForSettingsUpdated()
+        {
+            if (GlobalSetting != null)
+            {
+                GlobalSetting.RemoveListenerForSettingsUpdate(this);
+            }
+            else Debug.LogWarning("Didn't remove listener due to missing setting.");
+        }
+
+        public abstract void Execute(IColorSchemeEventArgs args);
+        public bool IsMonoBehaviour()
+        {
+            return true;
+        }
+
+        public Transform GetTransform()
+        {
+            return transform;
+        }
+
+        public virtual bool CanBeAutoAssigned() => _canBeAutoAssigned;
     }
 }
