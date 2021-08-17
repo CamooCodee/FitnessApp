@@ -7,7 +7,7 @@ namespace ColorSchemes
 {
     [AddComponentMenu("Color Schemes/Setting - Color Schemes", 0)]
     [DefaultExecutionOrder(-5)]
-    [RequireComponent(typeof(AutoColorSchemeInitializer))]
+    [RequireComponent(typeof(AutoColorSchemeSettingInitializer))]
     public class DefaultColorSchemeSetting : MonoBehaviour, ISetting<IColorSchemeEventArgs>
     {
         public List<ColorScheme> supportedSchemes = new List<ColorScheme>();
@@ -40,8 +40,9 @@ namespace ColorSchemes
         public void AddListenerForSettingsUpdate(ISettingListener<IColorSchemeEventArgs> listener)
         {
             if (listener != null && !SettingUpdateListeners.Contains(listener))
-            { 
+            {
                 SettingUpdateListeners.Add(listener);
+                InvokeListener(listener, new DefaultColorSchemeArgs(GetSchemeByName(currentScheme)));
             }
         }
 
@@ -53,13 +54,41 @@ namespace ColorSchemes
             }
         }
 
+        void RemoveNullListeners()
+        {
+            for (var i = 0; i < SettingUpdateListeners.Count; i++)
+            {
+                if(SettingUpdateListeners[i].Equals(null))
+                {
+                    SettingUpdateListeners.RemoveAt(i);
+                    i--;
+                }
+            }
+        }
+
+        ColorScheme GetSchemeByName(string schemeName)
+        {
+            for (var i = 0; i < supportedSchemes.Count; i++)
+            {
+                if (supportedSchemes[i].name == schemeName)
+                {
+                    return supportedSchemes[i];
+                }
+            }
+            
+            throw new Exception($"Can't find scheme: '{schemeName}'");
+        }
+        
         public void RefreshInEditor()
         {
+            if(supportedSchemes.Count == 0) return;
             SetScheme(currentScheme);
         }
 
-        public void SetScheme(string schemeName)
+        public void SetScheme(string schemeName, bool reInitBeforeSet = false)
         {
+            if(reInitBeforeSet) ReInitAll();
+            
             for (var i = 0; i < supportedSchemes.Count; i++)
             {
                 if(supportedSchemes[i] == null) return;
@@ -75,6 +104,7 @@ namespace ColorSchemes
 
         void InvokeAllListeners(IColorSchemeEventArgs args)
         {
+            RemoveNullListeners();
             for (var i = 0; i < SettingUpdateListeners.Count; i++)
             {
                 if (SettingUpdateListeners[i] != null) 
@@ -158,10 +188,11 @@ namespace ColorSchemes
             if (!result) Debug.LogWarning("Multiple Setting - Color Schemes detected!", gameObject);
         }
 
-        [ContextMenu("BLUE")]
-        public void SetBlue()
+        [ContextMenu("Remove Component")]
+        public void Remove()
         {
-            SetScheme("Blue");
+            var helper = GetComponent<AutoColorSchemeSettingInitializer>();
+            if(helper != null) helper.DestroyAll();
         }
     }
 }

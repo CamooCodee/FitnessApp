@@ -35,12 +35,19 @@ namespace ColorSchemes
                     continue;
                 }
                 var newSchemeName = newScheme.name;
-                if (GUILayout.Button("Set " + newSchemeName + " Scheme"))
+                if (GUILayout.Button("Set " + GetSchemeNameWithoutSchemePostFix(newSchemeName) + " Scheme"))
                 {
-                    myTarget.SetScheme(newSchemeName);
+                    myTarget.SetScheme(newSchemeName, reInitBeforeSet: !Application.isPlaying);
                 }
             }
             GUILayout.EndVertical();
+        }
+
+        private static string GetSchemeNameWithoutSchemePostFix(string name)
+        {
+            if (!name.EndsWith("Scheme")) return name;
+            string cleaned = name.Remove(name.Length - 6);
+            return cleaned;
         }
     }
 }

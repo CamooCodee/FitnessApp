@@ -13,20 +13,24 @@ namespace ColorSchemes
         public override void OnGUI(Rect labelRect, SerializedProperty property, GUIContent label)
         {
             if(_texture == null) _texture = Resources.Load<Texture2D>(BAR_TEXTURE_PATH);
-            
-            property.serializedObject.Update();
-            EditorGUI.BeginProperty(labelRect, label, property);
-            
-            var targetColorSchemeElement = property.serializedObject.targetObject as IColorSchemeElement;
 
-            if (targetColorSchemeElement == null)
+            property.serializedObject.Update();
+            
+            bool editingMultiple = property.serializedObject.targetObjects.Length > 1;
+            EditorGUI.BeginProperty(labelRect, label, property);
+            var targetColorSchemeElement = property.serializedObject.targetObject as IColorSchemeElement;
+            if (targetColorSchemeElement == null) 
                 throw new InvalidColorSchemeDataUsageException();
             var colorSchemeData = targetColorSchemeElement.GetData(GetIndexByPropertyPath(property.propertyPath));
             var previous = GUI.contentColor;
             if (colorSchemeData != null && colorSchemeData.colorScheme != null)
             {
-                GUI.contentColor = colorSchemeData.GetSelectedColor();
-                label = new GUIContent(_texture);
+                if(!editingMultiple)
+                {
+                    GUI.contentColor = colorSchemeData.GetSelectedColor();
+                    label = new GUIContent(_texture);
+                }
+                else label = new GUIContent("-");
             }
             labelRect = EditorGUI.PrefixLabel(labelRect, GUIUtility.GetControlID(FocusType.Passive), label);
             GUI.contentColor = previous;
@@ -39,26 +43,31 @@ namespace ColorSchemes
             EditorGUI.PropertyField(schemeRect, schemeProp);
             EditorGUI.EndProperty();
 
-            if (colorSchemeData != null && colorSchemeData.colorScheme != null)
+            if (!editingMultiple && colorSchemeData != null && colorSchemeData.colorScheme != null)
             {
                 var scheme = colorSchemeData.colorScheme;
 
                 int selectedColorIndex;
                 selectedColorIndex = colorSchemeData.GetSelectedColorIndex();
                 var tags = GetAvailableColorTags(scheme);
-                
+
                 var colorPopupLabel = new GUIContent("Color");
-                var colorPopupRect = new Rect(new Vector2(schemeRect.position.x, schemeRect.position.y + 20f), schemeRect.size);
-                colorPopupRect = EditorGUI.PrefixLabel(colorPopupRect, GUIUtility.GetControlID(FocusType.Passive), colorPopupLabel);
+                var colorPopupRect = new Rect(new Vector2(schemeRect.position.x, schemeRect.position.y + 20f),
+                    schemeRect.size);
+                colorPopupRect = EditorGUI.PrefixLabel(colorPopupRect, GUIUtility.GetControlID(FocusType.Passive),
+                    colorPopupLabel);
                 int previousIndex = selectedColorIndex;
                 selectedColorIndex = EditorGUI.Popup(colorPopupRect, selectedColorIndex, tags);
 
+
                 if (previousIndex != selectedColorIndex)
-                {
+                { 
                     colorSchemeData.SelectColor(selectedColorIndex);
                     targetColorSchemeElement.OnSelectedColorUpdated();
                 }
             }
+            
+            
             
             EditorGUI.EndProperty();
             property.serializedObject.ApplyModifiedProperties();

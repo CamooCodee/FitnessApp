@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using ColorSchemes;
+using FitnessApp;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "NewColorScheme", menuName = "Scriptable Objects/Color Schemes/Scheme")]
@@ -16,24 +17,32 @@ public class ColorScheme : ScriptableObject
     private void OnValidate()
     {
         bool colorsChanged = false;
+        if (_previousColors.Count != colors.Count)
+        {
+            RenameDuplicateTags(logRename: false);
+            colorsChanged = true;
+        }
         if (_previousColors.Count == 0) colorsChanged = true;
+        
         var allTags = new List<string>();
+
         for (var i = 0; i < colors.Count; i++)
         {
             if (allTags.Contains(colors[i].tag))
-            {
-                Debug.LogError("Tag already exists. Choose a new one.");
+            { 
+                Debug.LogError($"Tag '{colors[i].tag}' on '{name}' already exists. Choose a new one."); 
                 continue;
-            }
+            } 
             allTags.Add(colors[i].tag);
-
-            if (colorsChanged == false && colors[i].color != _previousColors[i])
+            
+            if (!colorsChanged && colors[i].color != _previousColors[i]) 
                 colorsChanged = true;
         }
 
+
         if (colorsChanged && ColorSchemeMonoBehaviour.GlobalSetting != null)
             ColorSchemeMonoBehaviour.GlobalSetting.RefreshInEditor();
-
+        
         _previousColors.Clear();
         for (var i = 0; i < colors.Count; i++)
         {
@@ -41,23 +50,22 @@ public class ColorScheme : ScriptableObject
         }
     }
 
-    private void Awake()
+    private void OnEnable()
     {
         RenameDuplicateTags();
     }
-
-    void RenameDuplicateTags()
+    
+    void RenameDuplicateTags(bool logRename = true)
     {
         var allTags = new List<string>();
         for (var i = 0; i < colors.Count; i++)
         {
-            if (allTags.Contains(colors[i].tag))
+            if (colors[i].tag.IsNullOrWhitespace()) colors[i].tag = "Tag";
+            while (allTags.Contains(colors[i].tag))
             {
-                Debug.LogWarning($"Changing tag {colors[i].tag}");
                 string newTag = colors[i].tag + "1";
+                if(logRename) Debug.LogWarning($"Changing tag '{colors[i].tag}' on '{name}' to '{newTag}'!");
                 colors[i].tag = newTag;
-                allTags.Add(newTag);
-                continue;
             }
             allTags.Add(colors[i].tag);
         }

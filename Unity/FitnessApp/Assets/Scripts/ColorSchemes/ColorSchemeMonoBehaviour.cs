@@ -49,7 +49,7 @@ namespace ColorSchemes
             {
                 GlobalSetting.AddListenerForSettingsUpdate(this);
             }
-            else Debug.LogWarning("Didn't add listener due to missing setting.");
+            else Debug.LogWarning("Didn't add listener due to missing setting. There should be ONE settings object in the scene. You can find it at 'Add Component > Color Schemes > Setting - Color Schemes'.");
         }
         protected void StopListeningForSettingsUpdated()
         {
@@ -57,7 +57,7 @@ namespace ColorSchemes
             {
                 GlobalSetting.RemoveListenerForSettingsUpdate(this);
             }
-            else Debug.LogWarning("Didn't remove listener due to missing setting.");
+            else Debug.LogWarning("Didn't remove listener due to missing setting. There should be ONE settings object in the scene. You can find it at 'Add Component > Color Schemes > Setting - Color Schemes'.");
         }
 
         public abstract void Execute(IColorSchemeEventArgs args);

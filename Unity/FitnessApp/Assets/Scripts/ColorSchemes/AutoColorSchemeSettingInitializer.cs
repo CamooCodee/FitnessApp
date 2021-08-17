@@ -2,10 +2,9 @@ using ColorSchemes;
 using UnityEngine;
 
 [ExecuteAlways]
-[RequireComponent(typeof(DefaultColorSchemeSetting))]
 [AddComponentMenu("")]
 [DefaultExecutionOrder(0)]
-public class AutoColorSchemeInitializer : MonoBehaviour
+public class AutoColorSchemeSettingInitializer : MonoBehaviour
 {
     private DefaultColorSchemeSetting _target = null;
 
@@ -21,8 +20,16 @@ public class AutoColorSchemeInitializer : MonoBehaviour
     private void OnEnable()
     {
         this.hideFlags = HideFlags.HideInInspector;
+        if (Target == null) return;
         Target.ReInitAll();
     }
 #endif
-
+    
+    public void DestroyAll()
+    {
+#if UNITY_EDITOR
+        DestroyImmediate(Target);
+        DestroyImmediate(this);
+#endif
+    }
 }

@@ -16,7 +16,7 @@ namespace ColorSchemes
                 if (_targetElement == null)
                 {
                     var graphic = GetComponent<Graphic>();
-                    if (graphic == null) throw new NoGraphicsOnColorSchemeElementException();
+                    if (graphic == null) Debug.LogError($"No Graphic on: '{gameObject.name}'", this);
                     else _targetElement = graphic;
                 }
 
@@ -24,15 +24,18 @@ namespace ColorSchemes
             }
         }
 
+        private bool HasGraphic => _targetElement != null || TargetElement != null;
+        
         [SerializeField] private List<ColorSchemeData> supportedColorSchemes = new List<ColorSchemeData>();
 
         [SerializeField, HideInInspector]
-        private int selectedSchemeIndex;
+        private int selectedSchemeIndex = - 1;
         public ColorSchemeData SelectedScheme
         {
             get
             {
                 if (supportedColorSchemes.Count <= 0) return null;
+                if (selectedSchemeIndex < 0) return null;
                 return supportedColorSchemes[selectedSchemeIndex];
             }
             set
@@ -66,6 +69,7 @@ namespace ColorSchemes
                 if (alreadyAddedSchemes.Contains(scheme))
                 {
                     supportedColorSchemes[i].colorScheme = null;
+                    Debug.Log("This scheme already is supported!");
                 }
                 else alreadyAddedSchemes.Add(scheme);
             }
@@ -78,6 +82,12 @@ namespace ColorSchemes
         
         private void Start()
         {
+            if (!HasGraphic)
+            {
+                Debug.Log("Destroyed unused element due to missing graphic.");
+                Destroy(this);
+                return;
+            }
             _started = true;
             Setup();
         }
@@ -103,7 +113,7 @@ namespace ColorSchemes
 
         public void OnSelectedColorUpdated()
         {
-            SetTargetElementColor(SelectedScheme.GetSelectedColor());
+            if(selectedSchemeIndex >= 0) SetTargetElementColor(SelectedScheme.GetSelectedColor());
         }
 
         public override void Execute(IColorSchemeEventArgs args)
@@ -149,6 +159,16 @@ namespace ColorSchemes
                     colorScheme = scheme
                 });
             }
+        }
+
+        public override bool CanBeAutoAssigned()
+        {
+            return base.CanBeAutoAssigned() && HasGraphic;
+        }
+
+        public void InitializeWithCurrentColorScheme()
+        {
+            ListenForSettingsUpdate();
         }
     }
 }
