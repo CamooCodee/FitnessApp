@@ -42,7 +42,8 @@ namespace ColorSchemes
             if (listener != null && !SettingUpdateListeners.Contains(listener))
             {
                 SettingUpdateListeners.Add(listener);
-                InvokeListener(listener, new DefaultColorSchemeArgs(GetSchemeByName(currentScheme)));
+                if(!currentScheme.IsNullOrWhitespace())
+                    InvokeListener(listener, new DefaultColorSchemeArgs(GetSchemeByName(currentScheme)));
             }
         }
 

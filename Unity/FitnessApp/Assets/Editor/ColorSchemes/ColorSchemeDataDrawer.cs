@@ -71,6 +71,7 @@ namespace ColorSchemes
             
             EditorGUI.EndProperty();
             property.serializedObject.ApplyModifiedProperties();
+            PrefabUtility.RecordPrefabInstancePropertyModifications((UnityEngine.Object)targetColorSchemeElement);
         }
 
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
