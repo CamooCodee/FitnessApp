@@ -1,4 +1,4 @@
-﻿using FitnessApp;
+﻿using FitnessApp.Setting;
 
 namespace ColorSchemes
 {

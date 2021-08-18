@@ -1,5 +1,4 @@
-﻿using System;
-using FitnessApp;
+﻿using FitnessApp.Setting;
 using UnityEngine;
 
 namespace ColorSchemes

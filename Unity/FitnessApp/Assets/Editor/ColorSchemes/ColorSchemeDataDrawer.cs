@@ -1,6 +1,7 @@
 using System;
 using UnityEditor;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace ColorSchemes
 {
@@ -66,9 +67,7 @@ namespace ColorSchemes
                     targetColorSchemeElement.OnSelectedColorUpdated();
                 }
             }
-            
-            
-            
+
             EditorGUI.EndProperty();
             property.serializedObject.ApplyModifiedProperties();
         }

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace FitnessApp
+namespace FitnessApp.Setting
 {
     public interface ISettingListener<T> where T : ISettingsEventArgs
     {

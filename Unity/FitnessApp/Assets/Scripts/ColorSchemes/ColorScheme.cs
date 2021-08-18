@@ -4,7 +4,7 @@ using ColorSchemes;
 using FitnessApp;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "NewColorScheme", menuName = "Scriptable Objects/Color Schemes/Scheme")]
+[CreateAssetMenu(fileName = "NewColorScheme", menuName = "Scriptable Objects/Color Scheme")]
 public class ColorScheme : ScriptableObject
 {
     public const string COLOR_SCHEMES_PATH = "ColorSchemes";

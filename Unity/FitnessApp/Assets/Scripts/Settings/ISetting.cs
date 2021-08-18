@@ -1,4 +1,4 @@
-﻿namespace FitnessApp
+﻿namespace FitnessApp.Setting
 {
     public interface ISetting<T> where T : ISettingsEventArgs
     {

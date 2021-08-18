@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-namespace ColorSchemes
+﻿namespace ColorSchemes
 {
     public interface IColorSchemeElement
     {

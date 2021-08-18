@@ -170,7 +170,7 @@ MonoBehaviour:
   supportedSchemes:
   - {fileID: 11400000, guid: 53c0a232c7375b948975d1db2faafbce, type: 2}
   - {fileID: 11400000, guid: 132a2118153dc8a40b7bafa773337c1f, type: 2}
-  currentScheme: BlackAndWhiteScheme
+  currentScheme: ColorFullScheme
 --- !u!114 &197396434
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -234,7 +234,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.34901962, g: 0.34901962, b: 0.34901962, a: 1}
+  m_Color: {r: 0.24705882, g: 0.39729655, b: 0.5764706, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -276,7 +276,7 @@ MonoBehaviour:
     selectedColorIndex: 1
   - colorScheme: {fileID: 11400000, guid: 132a2118153dc8a40b7bafa773337c1f, type: 2}
     selectedColorIndex: 1
-  selectedSchemeIndex: 0
+  selectedSchemeIndex: 1
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -584,7 +584,7 @@ MonoBehaviour:
     selectedColorIndex: 2
   - colorScheme: {fileID: 11400000, guid: 132a2118153dc8a40b7bafa773337c1f, type: 2}
     selectedColorIndex: 2
-  selectedSchemeIndex: 0
+  selectedSchemeIndex: 1
 --- !u!114 &995881344
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -598,7 +598,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.0754717, g: 0.0754717, b: 0.0754717, a: 1}
+  m_Color: {r: 0.7176471, g: 0.4784314, b: 0.3019608, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -678,7 +678,7 @@ MonoBehaviour:
     selectedColorIndex: 2
   - colorScheme: {fileID: 11400000, guid: 132a2118153dc8a40b7bafa773337c1f, type: 2}
     selectedColorIndex: 0
-  selectedSchemeIndex: 0
+  selectedSchemeIndex: 1
 --- !u!114 &1010204726
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -692,7 +692,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.0754717, g: 0.0754717, b: 0.0754717, a: 1}
+  m_Color: {r: 0.28481576, g: 0.5764706, b: 0.24705882, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -807,5 +807,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   supportedColorSchemes:
   - colorScheme: {fileID: 11400000, guid: 53c0a232c7375b948975d1db2faafbce, type: 2}
+    selectedColorIndex: 0
+  - colorScheme: {fileID: 11400000, guid: 132a2118153dc8a40b7bafa773337c1f, type: 2}
     selectedColorIndex: 0
   selectedSchemeIndex: 0
