@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2020234090278224846}
   - component: {fileID: 5394268431558636277}
   - component: {fileID: 2340091468913766008}
+  - component: {fileID: 7541941341449057725}
   m_Layer: 5
   m_Name: CardWeightKg
   m_TagString: Untagged
@@ -134,6 +135,26 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &7541941341449057725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1965958614400456262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6cae41fe6e84291962640177a4fcb76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  supportedColorSchemes:
+  - colorScheme: {fileID: 11400000, guid: 132a2118153dc8a40b7bafa773337c1f, type: 2}
+    selectedColorIndex: 6
+  - colorScheme: {fileID: 11400000, guid: 53c0a232c7375b948975d1db2faafbce, type: 2}
+    selectedColorIndex: 0
+  - colorScheme: {fileID: 11400000, guid: 2993948e09f81b24c9ec27fd7b3374f3, type: 2}
+    selectedColorIndex: 0
+  selectedSchemeIndex: 0
 --- !u!1 &4596983983339471754
 GameObject:
   m_ObjectHideFlags: 0
@@ -145,6 +166,7 @@ GameObject:
   - component: {fileID: 7541256979187060064}
   - component: {fileID: 1004288575064940871}
   - component: {fileID: 1090058960574934032}
+  - component: {fileID: 7535759285978369670}
   m_Layer: 5
   m_Name: CardReps
   m_TagString: Untagged
@@ -268,6 +290,26 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &7535759285978369670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4596983983339471754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6cae41fe6e84291962640177a4fcb76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  supportedColorSchemes:
+  - colorScheme: {fileID: 11400000, guid: 132a2118153dc8a40b7bafa773337c1f, type: 2}
+    selectedColorIndex: 6
+  - colorScheme: {fileID: 11400000, guid: 53c0a232c7375b948975d1db2faafbce, type: 2}
+    selectedColorIndex: 0
+  - colorScheme: {fileID: 11400000, guid: 2993948e09f81b24c9ec27fd7b3374f3, type: 2}
+    selectedColorIndex: 0
+  selectedSchemeIndex: 0
 --- !u!1 &4651129860375535413
 GameObject:
   m_ObjectHideFlags: 0
@@ -279,6 +321,7 @@ GameObject:
   - component: {fileID: 4651129860375535414}
   - component: {fileID: 4651129860375535416}
   - component: {fileID: 4651129860375535415}
+  - component: {fileID: 6426518186855607367}
   m_Layer: 5
   m_Name: WorkoutCardNonTimer
   m_TagString: Untagged
@@ -335,7 +378,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6a2f9e6e628589e4f9bc97a1d3a177a8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: dcf597ac8e281b344b3ca49605614340, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -344,7 +387,27 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 4
+--- !u!114 &6426518186855607367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4651129860375535413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6cae41fe6e84291962640177a4fcb76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  supportedColorSchemes:
+  - colorScheme: {fileID: 11400000, guid: 132a2118153dc8a40b7bafa773337c1f, type: 2}
+    selectedColorIndex: 0
+  - colorScheme: {fileID: 11400000, guid: 53c0a232c7375b948975d1db2faafbce, type: 2}
+    selectedColorIndex: 0
+  - colorScheme: {fileID: 11400000, guid: 2993948e09f81b24c9ec27fd7b3374f3, type: 2}
+    selectedColorIndex: 0
+  selectedSchemeIndex: 0
 --- !u!1 &4766569394079773559
 GameObject:
   m_ObjectHideFlags: 0
@@ -356,6 +419,7 @@ GameObject:
   - component: {fileID: 7398659004668679849}
   - component: {fileID: 5431089243217579251}
   - component: {fileID: 3586534867348887098}
+  - component: {fileID: 8041536703697230603}
   m_Layer: 5
   m_Name: CardWeightLbs
   m_TagString: Untagged
@@ -479,6 +543,26 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &8041536703697230603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4766569394079773559}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6cae41fe6e84291962640177a4fcb76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  supportedColorSchemes:
+  - colorScheme: {fileID: 11400000, guid: 132a2118153dc8a40b7bafa773337c1f, type: 2}
+    selectedColorIndex: 6
+  - colorScheme: {fileID: 11400000, guid: 53c0a232c7375b948975d1db2faafbce, type: 2}
+    selectedColorIndex: 0
+  - colorScheme: {fileID: 11400000, guid: 2993948e09f81b24c9ec27fd7b3374f3, type: 2}
+    selectedColorIndex: 0
+  selectedSchemeIndex: 0
 --- !u!1 &6370140520473000943
 GameObject:
   m_ObjectHideFlags: 0
@@ -490,6 +574,7 @@ GameObject:
   - component: {fileID: 43247939931843943}
   - component: {fileID: 5920744046297317118}
   - component: {fileID: 8679916458776745211}
+  - component: {fileID: 5797992741199304043}
   m_Layer: 5
   m_Name: CardExercise
   m_TagString: Untagged
@@ -613,6 +698,26 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &5797992741199304043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6370140520473000943}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6cae41fe6e84291962640177a4fcb76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  supportedColorSchemes:
+  - colorScheme: {fileID: 11400000, guid: 132a2118153dc8a40b7bafa773337c1f, type: 2}
+    selectedColorIndex: 6
+  - colorScheme: {fileID: 11400000, guid: 53c0a232c7375b948975d1db2faafbce, type: 2}
+    selectedColorIndex: 0
+  - colorScheme: {fileID: 11400000, guid: 2993948e09f81b24c9ec27fd7b3374f3, type: 2}
+    selectedColorIndex: 0
+  selectedSchemeIndex: 0
 --- !u!1 &8283183010069950241
 GameObject:
   m_ObjectHideFlags: 0
