@@ -2,7 +2,7 @@
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-namespace FitnessApp.UITabs
+namespace FitnessApp.UICore.UITabs
 {
     [AddComponentMenu("Ui Tabs/Button - Tabs")]
     public class TabButton : Button

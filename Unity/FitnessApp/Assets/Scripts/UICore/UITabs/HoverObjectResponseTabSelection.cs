@@ -1,7 +1,7 @@
 using FitnessApp.UICore;
 using UnityEngine;
 
-namespace FitnessApp.UITabs
+namespace FitnessApp.UICore.UITabs
 {
     [AddComponentMenu("Ui Tabs/Hover Object - Tabs")]
     public class HoverObjectResponseTabSelection : MonoBehaviour, ITabSelectionListener

@@ -2,7 +2,7 @@
 using System.Linq;
 using UnityEngine;
 
-namespace FitnessApp.UITabs
+namespace FitnessApp.UICore.UITabs
 {
     [AddComponentMenu("Ui Tabs/Group - Tabs")]
     public class TabGroup : MonoBehaviour
