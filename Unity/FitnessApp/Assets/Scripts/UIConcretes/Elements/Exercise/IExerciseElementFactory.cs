@@ -1,7 +1,7 @@
 ﻿using FitnessAppAPI;
 using UnityEngine;
 
-namespace FitnessApp.UIConcretes
+namespace FitnessApp.UIConcretes.Elements.Exercise
 {
     public interface IExerciseElementFactory
     {

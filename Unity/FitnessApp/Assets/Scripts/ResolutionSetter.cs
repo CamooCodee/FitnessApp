@@ -1,10 +1,14 @@
 using UnityEngine;
 
-[DefaultExecutionOrder(-1005)]
-public class ResolutionSetter : MonoBehaviour
+namespace FitnessApp
 {
-    private void Awake()
+    [DefaultExecutionOrder(-1005)]
+    public class ResolutionSetter : MonoBehaviour
     {
-        Screen.SetResolution(574, 1020, false);
+        private void Awake()
+        {
+            Screen.SetResolution(574, 1020, false);
+        }
     }
+
 }

@@ -1,8 +1,9 @@
-﻿using FitnessApp.UICore;
+﻿using FitnessApp.UIConcretes.Elements.Exercise;
+using FitnessApp.UICore;
 using FitnessAppAPI;
 using UnityEngine;
 
-namespace FitnessApp.UIConcretes
+namespace FitnessApp.UIConcretes.Screens.HomeExerciseList
 {
     public class MainExerciseList : FitnessAppMonoBehaviour
     {

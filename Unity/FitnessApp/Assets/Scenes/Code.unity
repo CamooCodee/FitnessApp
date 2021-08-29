@@ -515,13 +515,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 680198041}
-        m_TargetAssemblyTypeName: CreateExerciseComponentsController, Assembly-CSharp
-        m_MethodName: ClickAddButton
-        m_Mode: 2
+      - m_Target: {fileID: 602883192}
+        m_TargetAssemblyTypeName: FitnessApp.UIConcretes.Screens.ExerciseDetailsScreen,
+          Assembly-CSharp
+        m_MethodName: InvokeWeightAdd
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 689500322}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2673,22 +2674,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 602883191}
-        m_TargetAssemblyTypeName: FitnessApp.UIConcretes.ExerciseDetailsScreenLogic,
+      - m_Target: {fileID: 602883192}
+        m_TargetAssemblyTypeName: FitnessApp.UIConcretes.Screens.ExerciseDetailsScreen,
           Assembly-CSharp
-        m_MethodName: Apply
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1688069230}
-        m_TargetAssemblyTypeName: FitnessApp.UIConcretes.MainExerciseList, Assembly-CSharp
-        m_MethodName: UpdateExerciseElements
+        m_MethodName: InvokeApply
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2934,10 +2923,10 @@ RectTransform:
   m_Father: {fileID: 680198036}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 180, y: -90}
-  m_SizeDelta: {x: 360, y: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &452957068
 MonoBehaviour:
@@ -3542,7 +3531,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 680198041}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: CreateExerciseComponentsController, Assembly-CSharp
         m_MethodName: ResetUI
         m_Mode: 1
@@ -4732,9 +4721,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 602883190}
+  - component: {fileID: 602883192}
   - component: {fileID: 602883191}
+  - component: {fileID: 602883193}
+  - component: {fileID: 602883194}
   m_Layer: 5
-  m_Name: CreateExercise
+  m_Name: ExerciseDetails
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4774,8 +4766,86 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   domain: {fileID: 1748261697}
-  screenPopulatorReference: {fileID: 680198041}
-  screenReaderReference: {fileID: 680198041}
+  screenPopulatorReference: {fileID: 602883193}
+  screenReaderReference: {fileID: 602883193}
+--- !u!114 &602883192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 602883189}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 955d0df0eb384fcc99d6e2dba82a7ce6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onScreenOpen:
+    m_PersistentCalls:
+      m_Calls: []
+  onScreenClose:
+    m_PersistentCalls:
+      m_Calls: []
+  onAddTimer:
+    unityEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  onAddReps:
+    unityEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  onAddWeight:
+    unityEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  onAdd:
+    unityEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  onApply:
+    unityEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  onCancel:
+    unityEvent:
+      m_PersistentCalls:
+        m_Calls: []
+--- !u!114 &602883193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 602883189}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96de3d9e9bb17b8439072ac95c4b6bec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameInput: {fileID: 8121998116423524910}
+  buttons:
+  - {fileID: 1202082444}
+  - {fileID: 689500322}
+  - {fileID: 859245826}
+  componentPrefabs:
+  - {fileID: 7918765855673328099, guid: acf31f8c4a4f2e743b42bbcd0bc0959e, type: 3}
+  - {fileID: 6674229450821484235, guid: f48943a0c5ae10540a93b282ecef18d2, type: 3}
+  - {fileID: 3625163201557502963, guid: abe3cb1746c72544a86c75858afa33c9, type: 3}
+  componentHolder: {fileID: 1086479594}
+  componentContentHolder: {fileID: 680198036}
+  rebuilder: {fileID: 1666258149}
+--- !u!114 &602883194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 602883189}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53a86850668a49bb9bda2f19a2534f5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &641370632 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3696706366371604168, guid: 8528af6844fc02c45995e655d5038b7b, type: 3}
@@ -4848,7 +4918,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 680198041}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: CreateExerciseComponentsController, Assembly-CSharp
         m_MethodName: ResetUI
         m_Mode: 1
@@ -4980,12 +5050,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 680198036}
-  - component: {fileID: 680198041}
   - component: {fileID: 680198039}
   - component: {fileID: 680198038}
   - component: {fileID: 680198037}
   - component: {fileID: 680198040}
-  - component: {fileID: 680198042}
   m_Layer: 5
   m_Name: ComponentsContent
   m_TagString: Untagged
@@ -5092,42 +5160,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 0
   m_VerticalFit: 2
---- !u!114 &680198041
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 680198035}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96de3d9e9bb17b8439072ac95c4b6bec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nameInput: {fileID: 8121998116423524910}
-  buttons:
-  - {fileID: 1202082444}
-  - {fileID: 689500322}
-  - {fileID: 859245826}
-  componentPrefabs:
-  - {fileID: 7918765855673328099, guid: acf31f8c4a4f2e743b42bbcd0bc0959e, type: 3}
-  - {fileID: 6674229450821484235, guid: f48943a0c5ae10540a93b282ecef18d2, type: 3}
-  - {fileID: 3625163201557502963, guid: abe3cb1746c72544a86c75858afa33c9, type: 3}
-  componentHolder: {fileID: 1086479594}
-  componentContentHolder: {fileID: 680198036}
-  rebuilder: {fileID: 1666258149}
---- !u!114 &680198042
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 680198035}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53a86850668a49bb9bda2f19a2534f5d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &689500322 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8624813859122097958, guid: 8528af6844fc02c45995e655d5038b7b, type: 3}
@@ -5454,7 +5486,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1666258148}
-        m_TargetAssemblyTypeName: FitnessApp.UICore.ScreenSlideResponse, Assembly-CSharp
+        m_TargetAssemblyTypeName: FitnessApp.UICore.Screens.ScreenSlider, Assembly-CSharp
         m_MethodName: SlideAScreenOut
         m_Mode: 1
         m_Arguments:
@@ -5465,9 +5497,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1688069230}
-        m_TargetAssemblyTypeName: FitnessApp.UIConcretes.MainExerciseList, Assembly-CSharp
-        m_MethodName: UpdateExerciseElements
+      - m_Target: {fileID: 602883192}
+        m_TargetAssemblyTypeName: FitnessApp.UIConcretes.Screens.ExerciseDetailsScreen,
+          Assembly-CSharp
+        m_MethodName: InvokeCancel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6744,13 +6777,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 680198041}
-        m_TargetAssemblyTypeName: CreateExerciseComponentsController, Assembly-CSharp
-        m_MethodName: ClickAddButton
-        m_Mode: 2
+      - m_Target: {fileID: 602883192}
+        m_TargetAssemblyTypeName: FitnessApp.UIConcretes.Screens.ExerciseDetailsScreen,
+          Assembly-CSharp
+        m_MethodName: InvokeTimerAdd
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 1202082444}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -8314,8 +8348,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 180, y: 0}
-  m_SizeDelta: {x: 360, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1086479595
 MonoBehaviour:
@@ -12803,8 +12837,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 180, y: 0}
-  m_SizeDelta: {x: 360, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1688069228
 MonoBehaviour:
@@ -12930,10 +12964,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b98abdb11bc4b63a34b8a15118c605d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  exerciseList: {fileID: 1688069230}
   domain: {fileID: 1748261697}
   editExerciseScreenLogic: {fileID: 602883191}
-  editExerciseScreenVisuals: {fileID: 680198041}
   screenSlider: {fileID: 1666258148}
   editExerciseScreen: {fileID: 602883189}
 --- !u!1 &1720696638
@@ -13265,6 +13297,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc426380194f5b845b6c9aea2d3184e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onSingleAction:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1688069230}
+        m_TargetAssemblyTypeName: FitnessApp.UIConcretes.MainExerciseList, Assembly-CSharp
+        m_MethodName: UpdateExerciseElements
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &1753739146
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15022,13 +15069,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 680198041}
-        m_TargetAssemblyTypeName: CreateExerciseComponentsController, Assembly-CSharp
-        m_MethodName: ClickAddButton
-        m_Mode: 2
+      - m_Target: {fileID: 602883192}
+        m_TargetAssemblyTypeName: FitnessApp.UIConcretes.Screens.ExerciseDetailsScreen,
+          Assembly-CSharp
+        m_MethodName: InvokeRepsAdd
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 859245826}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 

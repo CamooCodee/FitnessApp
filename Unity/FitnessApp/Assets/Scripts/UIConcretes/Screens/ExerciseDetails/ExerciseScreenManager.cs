@@ -1,11 +1,10 @@
 using CustomAttributes;
-using DefaultNamespace;
 using FitnessApp.Domain;
 using UnityEngine;
 
-namespace FitnessApp.UIConcretes
+namespace FitnessApp.UIConcretes.Screens.ExerciseDetails
 {
-    public class ExerciseDetailsScreenLogic : MonoBehaviour
+    public class ExerciseScreenManager : MonoBehaviour, IExerciseScreenBehaviour, IExerciseEditor
     {
         [SerializeField] private MyFitnessDomain domain;
         private IExerciseScreenApplyBehaviour _applyBehaviour;
@@ -16,10 +15,13 @@ namespace FitnessApp.UIConcretes
         private IExerciseReadable _screenReader;
 
         private int _currentlyEditedId = -1;
-        
+
+        #region Awake Setup
+
         private void Awake()
         {
             InitializeInterfaceReferences();
+            ResetApplyBehaviour();
         }
 
         void InitializeInterfaceReferences()
@@ -29,31 +31,54 @@ namespace FitnessApp.UIConcretes
             _screenReader = screenReaderReference as IExerciseReadable;
             _screenReader.Require();
         }
+
+        #endregion
         
+        public void Initialize(ExerciseDetailsScreen screen)
+        {
+            screen.ListenForScreenClose(ResetApplyBehaviour);
+        }
+
+        public void OnScreenOpen(ExerciseDetailsScreen screen)
+        {
+            screen.ListenForApply(Apply);
+        }
+
+        #region Main Responsibilities
+
         public void StartEdit(int exercise)
         {
             _currentlyEditedId = exercise;
             PopulateScreen(exercise);
             _applyBehaviour = new EditExerciseApplyBehaviour();
         }
-        public void StartCreate()
+        
+        private void Apply()
         {
-            _applyBehaviour = new CreateExerciseApplyBehaviour();   
+            var read = ReadScreen();
+            _applyBehaviour.Apply(domain, read, _currentlyEditedId);
         }
         
-        public void Apply()
+        #endregion
+
+        private void ResetApplyBehaviour()
+        {
+            _currentlyEditedId = -1;
+            _applyBehaviour = new CreateExerciseApplyBehaviour();
+        }
+
+        private void PopulateScreen(int exerciseDataId)
+        {
+            var data = domain.PerformSingleAction().GetExerciseData(exerciseDataId);
+            _screenPopulator.Populate(new SimpleExerciseData(data));
+        }
+        
+        private SimpleExerciseData ReadScreen()
         {
             var exerciseData = SimpleExerciseData.Empty;
             _screenReader.ReadInto(exerciseData);
-            
-            _applyBehaviour.Apply(domain, exerciseData, _currentlyEditedId);
-        }
 
-        void PopulateScreen(int exerciseDataId)
-        {
-            var data = domain.PerformSingleAction().GetExerciseData(exerciseDataId);
-            
-            _screenPopulator.Populate(new SimpleExerciseData(data));
+            return exerciseData;
         }
     }
 }

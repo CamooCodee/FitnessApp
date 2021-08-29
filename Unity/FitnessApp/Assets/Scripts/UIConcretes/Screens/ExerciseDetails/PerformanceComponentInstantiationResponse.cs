@@ -2,7 +2,7 @@
 using FitnessApp.UICore;
 using UnityEngine;
 
-namespace FitnessApp.UIConcretes
+namespace FitnessApp.UIConcretes.Screens.ExerciseDetails
 {
     public class PerformanceComponentInstantiationResponse : MonoBehaviour, IVisualComponentFactory
     {

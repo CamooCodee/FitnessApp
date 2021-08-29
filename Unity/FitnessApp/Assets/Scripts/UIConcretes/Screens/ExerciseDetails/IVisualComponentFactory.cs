@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace FitnessApp.UIConcretes
+namespace FitnessApp.UIConcretes.Screens.ExerciseDetails
 {
     public interface IVisualComponentFactory
     {

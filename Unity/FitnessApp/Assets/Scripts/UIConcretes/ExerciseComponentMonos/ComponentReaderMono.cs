@@ -1,4 +1,4 @@
-﻿using DefaultNamespace;
+﻿using FitnessApp.UIConcretes.Screens.ExerciseDetails;
 using FitnessAppAPI;
 using UnityEngine;
 

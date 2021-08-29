@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace FitnessApp.UIConcretes
+namespace FitnessApp.UIConcretes.Elements.Exercise
 {
     public class ExerciseElementFactoryResponse : MonoBehaviour, IExerciseElementFactory
     {

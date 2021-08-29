@@ -1,6 +1,6 @@
 ﻿using FitnessApp.Domain;
 
-namespace FitnessApp.UIConcretes
+namespace FitnessApp.UIConcretes.Screens.ExerciseDetails
 {
     public interface IExerciseScreenApplyBehaviour
     {

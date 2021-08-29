@@ -1,4 +1,5 @@
 ﻿using System.Globalization;
+using FitnessApp.UIConcretes.Screens.ExerciseDetails;
 using FitnessAppAPI;
 using TMPro;
 using UnityEngine;

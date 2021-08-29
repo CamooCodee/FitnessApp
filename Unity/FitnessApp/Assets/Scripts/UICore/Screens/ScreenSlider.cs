@@ -2,10 +2,10 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace FitnessApp.UICore
+namespace FitnessApp.UICore.Screens
 {
     [AddComponentMenu("Screen Slider")]
-    public class ScreenSlideResponse : MonoBehaviour
+    public class ScreenSlider : MonoBehaviour
     {
         [SerializeField] private LeanTweenAnimationSpec animationSpec;
         [SerializeField] private Transform slideOrigin;
@@ -47,13 +47,20 @@ namespace FitnessApp.UICore
             {
                 _currentScreenObjects.Push(screenObject);
                 SlideIn(screenObject);
+                if (screenObject.TryGetComponent(out Screen screen)) screen.Open();
+                else Debug.Log("Sliding in a screen without a Screen component!");
             }
             else Debug.LogWarning("Can't slide screen. It's already inside of the screens stack.");
         }
 
         public void SlideAScreenOut()
         {
-            if (_currentScreenObjects.Count > 0) SlideOut();
+            bool atLeastOneScreenInStack = _currentScreenObjects.Count > 0;
+            if (atLeastOneScreenInStack)
+            {
+                var screen = _currentScreenObjects.Peek();
+                SlideOut();
+            }
         }
 
         void SlideIn(GameObject screen)
@@ -77,7 +84,19 @@ namespace FitnessApp.UICore
             LeanTween.cancel(toSlideOut);
             LeanTween.move(toSlideOut, slideOrigin.position, AnimationLength)
                 .setEase(AnimationEaseType)
-                .setOnComplete((Action) delegate { SetAsFirstChild(toSlideOut.transform); });
+                .setOnComplete((Action) delegate { OnSlideOutComplete(toSlideOut.transform); });
+        }
+        
+        void OnSlideOutComplete(Transform t)
+        {
+            SetAsFirstChild(t);    
+            InvokeCloseOnScreen(t.gameObject);
+        }
+        
+        void InvokeCloseOnScreen(GameObject screenObject)
+        {
+            if (screenObject.TryGetComponent(out Screen screen)) screen.Close();
+            else Debug.Log("Sliding out a screen without a Screen component!");
         }
 
         void SetAsFirstChild(Transform t)

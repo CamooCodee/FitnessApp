@@ -1,6 +1,4 @@
-﻿using FitnessApp;
-
-namespace DefaultNamespace
+﻿namespace FitnessApp.UIConcretes.Screens.ExerciseDetails
 {
     public interface IExerciseReadable
     {

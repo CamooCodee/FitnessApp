@@ -11,12 +11,13 @@ namespace FitnessApp.UIConcretes.ExerciseComponentMonos
         protected override PerformanceComponentArgs GetArgs(int id = -1)
         {
             float weight;
-            if (!float.TryParse(weightInput.text, out weight))
+            if (weightInput.text == "") weight = 0f;
+            else if (!float.TryParse(weightInput.text, out weight))
             {
                 Debug.LogError("The weight input returned an invalid value!");
                 return null;
             }
-            
+
             return new WeightComponentArgs(weight, "-", id);
         }
     }

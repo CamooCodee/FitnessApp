@@ -1,14 +1,13 @@
 using System.Collections.Generic;
-using DefaultNamespace;
 using FitnessApp.UICore;
 using UnityEngine;
 using FitnessAppAPI;
 using TMPro;
 
-namespace FitnessApp.UIConcretes
+namespace FitnessApp.UIConcretes.Screens.ExerciseDetails
 {
     [AddComponentMenu("Element Controller - Exercises")]
-    public class ExerciseDetailsScreenVisuals : MonoBehaviour, IExercisePopulatable, IExerciseReadable
+    public class ExerciseScreenLogic : MonoBehaviour, IExercisePopulatable, IExerciseReadable, IExerciseScreenBehaviour
     {
         [SerializeField] private TMP_InputField nameInput;
         [SerializeField] private GameObject[] buttons;
@@ -17,12 +16,14 @@ namespace FitnessApp.UIConcretes
         private Dictionary<PerformanceType, GameObject> _buttonDictionary;
 
         [SerializeField] private Transform componentHolder;
-
+        [Space(10f)]
         [SerializeField] private RectTransform componentContentHolder;
         [SerializeField] private UIRebuilder rebuilder;
         
 
         private IVisualComponentFactory _componentInstantiator;
+
+        #region Awake Setup
 
         private void Awake()
         {
@@ -67,20 +68,41 @@ namespace FitnessApp.UIConcretes
                 _buttonDictionary.Add(typeTag, buttons[i]);
             }
         }
+        
+        #endregion
+        
+        public void Initialize(ExerciseDetailsScreen screen)
+        {
+            screen.ListenForScreenClose(ResetUI);
+        }
 
-        public void ClickAddButton(GameObject button)
+        public void OnScreenOpen(ExerciseDetailsScreen screen)
         {
-            CreateComponentByButtonGameObject(button);
-            HideButton(button);
+            screen.ListenForAdd(Rebuild);
+            screen.ListenForRepsAdd(AddReps);
+            screen.ListenForTimerAdd(AddTimer);
+            screen.ListenForWeightAdd(AddWeight);
         }
         
-        void CreateComponentByButtonGameObject(GameObject button)
+        private void AddReps() => AddComponent(PerformanceType.Reps);
+        private void AddWeight() => AddComponent(PerformanceType.Weight);
+        private void AddTimer() => AddComponent(PerformanceType.Time);
+
+        private void AddComponent(PerformanceType type)
         {
-            var type = button.GetPerformanceTypeWithTagComponent();
-            InstantiateComponent(type);
+            InstantiateComponent(type);  
+            HideButtonOfType(type);
         }
         
-        void ClickDeleteButton(GameObject toDelete)
+        #region UI Logic
+
+        GameObject InstantiateComponent(PerformanceType type)
+        {
+            return _componentInstantiator.InstantiateComponent
+                (_componentDictionary[type], componentHolder, ClickComponentDeleteButton);
+        }
+        
+        void ClickComponentDeleteButton(GameObject toDelete)
         {
             var type = toDelete.GetPerformanceTypeWithTagComponent();
             ShowButtonOfType(type);
@@ -88,16 +110,6 @@ namespace FitnessApp.UIConcretes
             Rebuild();
         }
         
-        GameObject InstantiateComponent(PerformanceType type)
-        {
-            return _componentInstantiator.InstantiateComponent(_componentDictionary[type], componentHolder, ClickDeleteButton);
-        }
-
-        void HideButton(GameObject button)
-        {
-            button.SetActive(false);
-            Rebuild();
-        }
         void HideButtonOfType(PerformanceType type)
         {
             _buttonDictionary[type].SetActive(false);
@@ -106,13 +118,17 @@ namespace FitnessApp.UIConcretes
         {
             _buttonDictionary[type].SetActive(true);   
         }
-        
+
+        #endregion
+
+        #region UI Rebuilding
+
         private void Rebuild()
         {
             rebuilder.RebuildUILayout(componentContentHolder);
         }
-        
-        public void ResetUI()
+
+        private void ResetUI()
         {
             nameInput.text = "";
             for (var i = 0; i < buttons.Length; i++)
@@ -128,15 +144,9 @@ namespace FitnessApp.UIConcretes
             Rebuild();
         }
 
-        public void PopulateScreen(ExerciseData data)
-        {
-            for (var i = 0; i < data.performance.Count; i++)
-            {
-                var type = data.performance[i].GetPerformanceType();
-                InstantiateComponent(type);
-                HideButton(_buttonDictionary[type]);
-            }
-        }
+        #endregion
+
+        #region Population
 
         public void Populate(SimpleExerciseData data)
         {
@@ -154,13 +164,18 @@ namespace FitnessApp.UIConcretes
                 if(populatable != null) populatable.Populate(data);
                 if(instance != null) HideButtonOfType(performance[i].GetPerformanceType());
             }
+            
+            Rebuild();
         }
+
+        #endregion
+
+        #region Reading
 
         public void ReadInto(SimpleExerciseData data)
         {
             if (nameInput.text.IsNullOrWhitespace()) data.name = "Untitled Exercise";
             else data.name = nameInput.text;
-            PopulateComponents(data);
             ReadComponents(data);
         }
         
@@ -172,5 +187,7 @@ namespace FitnessApp.UIConcretes
                 if(readable != null) readable.ReadInto(data);
             }
         }
+
+        #endregion
     }
 }

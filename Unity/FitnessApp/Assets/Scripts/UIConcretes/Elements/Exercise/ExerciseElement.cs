@@ -6,7 +6,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace FitnessApp.UIConcretes
+namespace FitnessApp.UIConcretes.Elements.Exercise
 {
     public class ExerciseElement : MonoBehaviour
     {

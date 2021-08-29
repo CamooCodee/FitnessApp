@@ -11,7 +11,8 @@ namespace FitnessApp.UIConcretes.ExerciseComponentMonos
         protected override PerformanceComponentArgs GetArgs(int id = -1)
         {
             int reps;
-            if (!int.TryParse(repsInput.text, out reps))
+            if (repsInput.text == "") reps = 0;
+            else if (!int.TryParse(repsInput.text, out reps))
             {
                 Debug.LogError("The reps input returned an invalid value!");
                 return null;
