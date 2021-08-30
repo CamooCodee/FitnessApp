@@ -1,9 +1,14 @@
 using CustomAttributes;
 using FitnessApp.Domain;
+using TMPro;
 using UnityEngine;
 
 namespace FitnessApp.UIConcretes.Screens.ExerciseDetails
 {
+    /// <summary>
+    /// Starting point for reading and populating.
+    /// Responsible for handling edit and create mode. 
+    /// </summary>
     public class ExerciseScreenManager : MonoBehaviour, IExerciseScreenBehaviour, IExerciseEditor
     {
         [SerializeField] private MyFitnessDomain domain;
@@ -13,7 +18,11 @@ namespace FitnessApp.UIConcretes.Screens.ExerciseDetails
         [SerializeField, AcceptOnly(typeof(IExerciseReadable))] MonoBehaviour screenReaderReference;
         private IExercisePopulatable _screenPopulator;
         private IExerciseReadable _screenReader;
-
+        
+        [Space(10f)]
+        [SerializeField] private TextMeshProUGUI header;
+        private bool ShouldSetHeader => header != null;
+        
         private int _currentlyEditedId = -1;
 
         #region Awake Setup
@@ -37,6 +46,7 @@ namespace FitnessApp.UIConcretes.Screens.ExerciseDetails
         public void Initialize(ExerciseDetailsScreen screen)
         {
             screen.ListenForScreenClose(ResetApplyBehaviour);
+            screen.ListenForScreenClose(SetCreateHeader);
         }
 
         public void OnScreenOpen(ExerciseDetailsScreen screen)
@@ -51,6 +61,7 @@ namespace FitnessApp.UIConcretes.Screens.ExerciseDetails
             _currentlyEditedId = exercise;
             PopulateScreen(exercise);
             _applyBehaviour = new EditExerciseApplyBehaviour();
+            SetEditHeader();
         }
         
         private void Apply()
@@ -79,6 +90,19 @@ namespace FitnessApp.UIConcretes.Screens.ExerciseDetails
             _screenReader.ReadInto(exerciseData);
 
             return exerciseData;
+        }
+
+        void SetEditHeader()
+        {
+            if(!ShouldSetHeader) return;
+
+            header.text = "Edit Exercise";
+        }
+        void SetCreateHeader()
+        {
+            if(!ShouldSetHeader) return;
+
+            header.text = "Create Exercise";
         }
     }
 }
