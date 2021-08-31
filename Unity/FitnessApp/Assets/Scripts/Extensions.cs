@@ -69,5 +69,31 @@ namespace FitnessApp
             stream.Seek(0, SeekOrigin.Begin);
             return (T)formatter.Deserialize(stream);
         }
+
+        public static int GetExerciseAmount(this WorkoutData target)
+        {
+            if(target == null) throw new Exception("Cannot get exercise amount on null object.");
+            int amount = 0;
+            
+            foreach (var element in target.elements)
+            {
+                if (element is ExerciseData) amount++;
+            }
+
+            return amount;
+        }
+        
+        public static int GetPauseAmount(this WorkoutData target)
+        {
+            if(target == null) throw new Exception("Cannot get pause amount on null object.");
+            int amount = 0;
+            
+            foreach (var element in target.elements)
+            {
+                if (element is PauseData) amount++;
+            }
+
+            return amount;
+        }
     }
 }
