@@ -357,8 +357,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Are you sure you want to stop creating this Workout?
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 9a276c420ec5d7a42866261700f3e1bd, type: 2}
+  m_sharedMaterial: {fileID: -7018100724626685811, guid: 9a276c420ec5d7a42866261700f3e1bd, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -454,6 +454,10 @@ PrefabInstance:
       value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 5731071579975246760, guid: 63deb5f9bc2e9dd459df8bf2f00544d0, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 9a276c420ec5d7a42866261700f3e1bd, type: 2}
+    - target: {fileID: 5731071579975246760, guid: 63deb5f9bc2e9dd459df8bf2f00544d0, type: 3}
       propertyPath: m_fontStyle
       value: 0
       objectReference: {fileID: 0}
@@ -461,6 +465,10 @@ PrefabInstance:
       propertyPath: m_fontSizeBase
       value: 14
       objectReference: {fileID: 0}
+    - target: {fileID: 5731071579975246760, guid: 63deb5f9bc2e9dd459df8bf2f00544d0, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -7018100724626685811, guid: 9a276c420ec5d7a42866261700f3e1bd, type: 2}
     - target: {fileID: 6285462581300342929, guid: 63deb5f9bc2e9dd459df8bf2f00544d0, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -592,6 +600,10 @@ PrefabInstance:
       value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 5731071579975246760, guid: 63deb5f9bc2e9dd459df8bf2f00544d0, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 9a276c420ec5d7a42866261700f3e1bd, type: 2}
+    - target: {fileID: 5731071579975246760, guid: 63deb5f9bc2e9dd459df8bf2f00544d0, type: 3}
       propertyPath: m_fontStyle
       value: 0
       objectReference: {fileID: 0}
@@ -599,6 +611,10 @@ PrefabInstance:
       propertyPath: m_fontSizeBase
       value: 14
       objectReference: {fileID: 0}
+    - target: {fileID: 5731071579975246760, guid: 63deb5f9bc2e9dd459df8bf2f00544d0, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -7018100724626685811, guid: 9a276c420ec5d7a42866261700f3e1bd, type: 2}
     - target: {fileID: 6285462581300342929, guid: 63deb5f9bc2e9dd459df8bf2f00544d0, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

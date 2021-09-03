@@ -68,8 +68,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Exercise Name:'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 9a276c420ec5d7a42866261700f3e1bd, type: 2}
+  m_sharedMaterial: {fileID: 4328284666681109373, guid: cdd0329e439c52d438a76c4e5f6ad022, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
