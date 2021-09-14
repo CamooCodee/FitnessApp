@@ -744,7 +744,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6346441691827434108
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1231,7 +1231,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6346441693272445942
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1694,19 +1694,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 308234329361749656, guid: 63deb5f9bc2e9dd459df8bf2f00544d0, type: 3}
       propertyPath: m_Color.b
-      value: 0.86274517
+      value: 0.3137255
       objectReference: {fileID: 0}
     - target: {fileID: 308234329361749656, guid: 63deb5f9bc2e9dd459df8bf2f00544d0, type: 3}
       propertyPath: m_Color.g
-      value: 0.85098046
+      value: 0.56078434
       objectReference: {fileID: 0}
     - target: {fileID: 308234329361749656, guid: 63deb5f9bc2e9dd459df8bf2f00544d0, type: 3}
       propertyPath: m_Color.r
-      value: 0.8352942
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2536846273877435278, guid: 63deb5f9bc2e9dd459df8bf2f00544d0, type: 3}
       propertyPath: supportedColorSchemes.Array.data[0].selectedColorIndex
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5731071579975246760, guid: 63deb5f9bc2e9dd459df8bf2f00544d0, type: 3}
       propertyPath: m_text
@@ -1852,7 +1852,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6285462581300342929, guid: 63deb5f9bc2e9dd459df8bf2f00544d0, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6285462581300342929, guid: 63deb5f9bc2e9dd459df8bf2f00544d0, type: 3}
       propertyPath: m_AnchorMin.x
@@ -1860,11 +1860,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6285462581300342929, guid: 63deb5f9bc2e9dd459df8bf2f00544d0, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6285462581300342929, guid: 63deb5f9bc2e9dd459df8bf2f00544d0, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 167
       objectReference: {fileID: 0}
     - target: {fileID: 6285462581300342929, guid: 63deb5f9bc2e9dd459df8bf2f00544d0, type: 3}
       propertyPath: m_SizeDelta.y
@@ -1900,11 +1900,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6285462581300342929, guid: 63deb5f9bc2e9dd459df8bf2f00544d0, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 83.5
       objectReference: {fileID: 0}
     - target: {fileID: 6285462581300342929, guid: 63deb5f9bc2e9dd459df8bf2f00544d0, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -17
       objectReference: {fileID: 0}
     - target: {fileID: 6285462581300342929, guid: 63deb5f9bc2e9dd459df8bf2f00544d0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1921,6 +1921,10 @@ PrefabInstance:
     - target: {fileID: 7273544660668148281, guid: 63deb5f9bc2e9dd459df8bf2f00544d0, type: 3}
       propertyPath: m_Name
       value: DropdownButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 7273544660668148281, guid: 63deb5f9bc2e9dd459df8bf2f00544d0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 63deb5f9bc2e9dd459df8bf2f00544d0, type: 3}
@@ -1982,7 +1986,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6285462581300342929, guid: 63deb5f9bc2e9dd459df8bf2f00544d0, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6285462581300342929, guid: 63deb5f9bc2e9dd459df8bf2f00544d0, type: 3}
       propertyPath: m_AnchorMin.x
@@ -1990,11 +1994,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6285462581300342929, guid: 63deb5f9bc2e9dd459df8bf2f00544d0, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6285462581300342929, guid: 63deb5f9bc2e9dd459df8bf2f00544d0, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 167
       objectReference: {fileID: 0}
     - target: {fileID: 6285462581300342929, guid: 63deb5f9bc2e9dd459df8bf2f00544d0, type: 3}
       propertyPath: m_SizeDelta.y
@@ -2030,11 +2034,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6285462581300342929, guid: 63deb5f9bc2e9dd459df8bf2f00544d0, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 258.5
       objectReference: {fileID: 0}
     - target: {fileID: 6285462581300342929, guid: 63deb5f9bc2e9dd459df8bf2f00544d0, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -17
       objectReference: {fileID: 0}
     - target: {fileID: 6285462581300342929, guid: 63deb5f9bc2e9dd459df8bf2f00544d0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2052,6 +2056,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DropdownButton
       objectReference: {fileID: 0}
+    - target: {fileID: 7273544660668148281, guid: 63deb5f9bc2e9dd459df8bf2f00544d0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 63deb5f9bc2e9dd459df8bf2f00544d0, type: 3}
 --- !u!224 &1092516474920686688 stripped
@@ -2068,23 +2076,23 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 308234329361749656, guid: 63deb5f9bc2e9dd459df8bf2f00544d0, type: 3}
       propertyPath: m_Color.b
-      value: 0.86274517
+      value: 0.3137255
       objectReference: {fileID: 0}
     - target: {fileID: 308234329361749656, guid: 63deb5f9bc2e9dd459df8bf2f00544d0, type: 3}
       propertyPath: m_Color.g
-      value: 0.85098046
+      value: 0.56078434
       objectReference: {fileID: 0}
     - target: {fileID: 308234329361749656, guid: 63deb5f9bc2e9dd459df8bf2f00544d0, type: 3}
       propertyPath: m_Color.r
-      value: 0.8352942
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2536846273877435278, guid: 63deb5f9bc2e9dd459df8bf2f00544d0, type: 3}
       propertyPath: supportedColorSchemes.Array.data[0].selectedColorIndex
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5731071579975246760, guid: 63deb5f9bc2e9dd459df8bf2f00544d0, type: 3}
       propertyPath: m_text
-      value: Delete Pause
+      value: Remove Pause
       objectReference: {fileID: 0}
     - target: {fileID: 5731071579975246760, guid: 63deb5f9bc2e9dd459df8bf2f00544d0, type: 3}
       propertyPath: m_fontAsset

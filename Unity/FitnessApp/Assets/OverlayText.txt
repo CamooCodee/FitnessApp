@@ -1,0 +1,28 @@
+-Clicking the Back Button on the Create Workout screen, with some amount of info entered
+Discard Workout?
+[Cancel][Discard]
+
+-Clicking the Back Button on the Create Exercise screen, with some amount of info entered
+Discard Exercise?
+[Cancel][Discard]
+
+-Clicking the Back Button when editing a Workout, having entered new information
+Discard Workout changes?
+[Cancel][Discard]
+
+-Clicking the Back Button when editing an Exercise, having entered new information
+Discard Exercise changes?
+[Cancel][Discard]
+
+-Clicking the Back Button when adding Offset, having entered new information
+Discard Offset changes?
+[Cancel][Discard]
+
+-Editing an Exercise from inside of a Workout and clicking the Accept Button
+Confirm changes?
+Editing this Exercise will affect all Workouts it is used in. If you want to make changes for just this Workout, use the Offset Exercise option.
+[Cancel][Confirm]
+
+-Clicking the Back Button during a Workout
+End Workout?
+[No][Yes]
