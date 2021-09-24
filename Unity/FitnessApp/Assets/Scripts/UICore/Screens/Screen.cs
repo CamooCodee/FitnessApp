@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using FitnessApp.UIConcretes.Screens;
+using UnityEngine;
 using UnityEngine.Events;
 
 namespace FitnessApp.UICore.Screens
@@ -7,7 +8,7 @@ namespace FitnessApp.UICore.Screens
     {
         [SerializeField] private UnityEvent onScreenOpen;
         [SerializeField] private UnityEvent onScreenClose;
-        private bool _isOpen = false;
+        private bool _isOpen;
         
         public void Open()
         {
@@ -37,6 +38,42 @@ namespace FitnessApp.UICore.Screens
         public void ListenForScreenClose(UnityAction action)
         {
             onScreenClose.AddListener(action);
+        }
+        
+        protected void SetupBehaviours<TBehaviour, TScreen>(out TBehaviour[] behaviours) where TBehaviour : IScreenBehaviour<TScreen> where TScreen : Screen
+        {
+            FindBehaviours<TBehaviour, TScreen>(out behaviours);
+            InitializeBehaviours<TBehaviour, TScreen>(ref behaviours);
+        }
+        
+        void FindBehaviours<TBehaviour, TScreen>(out TBehaviour[] behaviours) where TBehaviour : IScreenBehaviour<TScreen> where TScreen : Screen
+        {
+            behaviours = GetComponents<TBehaviour>();
+            if (behaviours != null) return;
+            
+            Debug.Log("No Screen Behaviours found!");
+            behaviours = new TBehaviour[0];
+        }
+        
+        void InitializeBehaviours<TBehaviour, TScreen>(ref TBehaviour[] behaviours) where TBehaviour : IScreenBehaviour<TScreen> where TScreen : Screen
+        {
+            var screen = this as TScreen;
+            if(screen == null)
+                Debug.LogWarning($"Initializing behaviours with a type of a different screen. '{typeof(TBehaviour).Name}'");
+            
+            for (var i = 0; i < behaviours.Length; i++)
+                behaviours[i].Initialize(screen);
+        }
+
+        protected void InvokeOpenEvent<TBehaviour, TScreen>(ref TBehaviour[] behaviours) where TBehaviour : IScreenBehaviour<TScreen> where TScreen : Screen
+        {
+            var screen = this as TScreen;
+            if(screen == null)
+                Debug.LogWarning($"Initializing behaviours with a type of a different screen. '{typeof(TBehaviour).Name}'");
+
+            
+            for (var i = 0; i < behaviours.Length; i++) 
+                behaviours[i].OnScreenOpen(screen);
         }
     }
 }

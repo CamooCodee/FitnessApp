@@ -7,8 +7,7 @@ namespace FitnessApp
         public static SimpleExerciseData Empty => new SimpleExerciseData();
         
         public string name;
-        public PerformanceArgs performance;
-        public int exerciseId = -1;
+        public readonly PerformanceArgs performance;
         
         private SimpleExerciseData()
         {
@@ -26,7 +25,6 @@ namespace FitnessApp
         {
             name = source.name;
             performance = source.performance;
-            exerciseId = source.id;
         }
     }
 }

@@ -7,13 +7,13 @@ namespace FitnessApp
     [Serializable]
     public class CoupleAction
     {
-        private Action _action;
+        private event Action action;
         [SerializeField] private UnityEvent unityEvent = new UnityEvent();
         private CoupleAction _snapshot;
         
         public void AddListener(Action func)
         {
-            _action += func;
+            action += func;
         }
         public void AddListener(UnityAction func)
         {
@@ -21,7 +21,7 @@ namespace FitnessApp
         }
         public void RemoveListener(Action func)
         {
-            _action -= func;
+            action -= func;
         }
         public void RemoveListener(UnityAction func)
         {
@@ -31,20 +31,20 @@ namespace FitnessApp
         public void Invoke()
         {
             _snapshot?.Invoke();
-            _action?.Invoke();
+            action?.Invoke();
             unityEvent?.Invoke();
         }
         
         public void ClearUntilSnapshot()
         {
-            _action = null;
+            action = null;
             unityEvent = new UnityEvent();
         }
 
         public void CreateSnapshot()
         {
             _snapshot = new CoupleAction();
-            _snapshot._action = _action;
+            _snapshot.action = action;
             _snapshot.unityEvent = unityEvent;
             ClearUntilSnapshot();
         }

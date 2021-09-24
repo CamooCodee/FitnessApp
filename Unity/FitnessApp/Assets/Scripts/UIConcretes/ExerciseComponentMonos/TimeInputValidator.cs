@@ -17,7 +17,7 @@ namespace FitnessApp.UIConcretes.ExerciseComponentMonos
             _receivedNew = false;
         }
 
-        private bool _receivedNew = false;
+        private bool _receivedNew;
         private string _previousVal = "";
         
         public void OnNewValue(string text)

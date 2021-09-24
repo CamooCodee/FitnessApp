@@ -8,7 +8,7 @@ namespace FitnessApp.UIConcretes.ExerciseComponentMonos
     {
         [SerializeField] private TMP_InputField weightInput;
         
-        protected override PerformanceComponentArgs GetArgs(int id = -1)
+        protected override PerformanceComponentArgs ReadUserInputAndReturnAsComponentArgs(int id = -1)
         {
             float weight;
             if (weightInput.text == "") weight = 0f;

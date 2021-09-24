@@ -174,8 +174,7 @@ namespace FitnessApp.UIConcretes.Screens.ExerciseDetails
 
         public void ReadInto(SimpleExerciseData data)
         {
-            if (nameInput.text.IsNullOrWhitespace()) data.name = "Untitled Exercise";
-            else data.name = nameInput.text;
+            data.name = nameInput.text.IsNullOrWhitespace() ? "Untitled Exercise" : nameInput.text;
             ReadComponents(data);
         }
         
@@ -184,7 +183,7 @@ namespace FitnessApp.UIConcretes.Screens.ExerciseDetails
             for (var i = 0; i < componentHolder.childCount; i++)
             {
                 var readable = componentHolder.GetChild(i).GetComponent<IExerciseReadable>();
-                if(readable != null) readable.ReadInto(data);
+                readable?.ReadInto(data);
             }
         }
 

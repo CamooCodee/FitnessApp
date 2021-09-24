@@ -7,12 +7,15 @@ namespace FitnessApp.UIConcretes.Screens.ExerciseDetails
 {
     /// <summary>
     /// Starting point for reading and populating.
-    /// Responsible for handling edit and create mode. 
+    /// Responsible for handling edit and create mode.
+    /// The default mode is create. Edit mode gets initialized with the appropriate method call.
+    /// The modes are represented by the apply behaviour. 
     /// </summary>
-    public class ExerciseScreenManager : MonoBehaviour, IExerciseScreenBehaviour, IExerciseEditor
+    public class ExerciseScreenManager : MonoBehaviour, IExerciseScreenBehaviour, IElementEditor
     {
-        [SerializeField] private MyFitnessDomain domain;
         private IExerciseScreenApplyBehaviour _applyBehaviour;
+
+        [SerializeField] private MyFitnessDomain domain;
         
         [SerializeField, AcceptOnly(typeof(IExercisePopulatable))] MonoBehaviour screenPopulatorReference;
         [SerializeField, AcceptOnly(typeof(IExerciseReadable))] MonoBehaviour screenReaderReference;
@@ -64,6 +67,12 @@ namespace FitnessApp.UIConcretes.Screens.ExerciseDetails
             SetEditHeader();
         }
         
+        private void ResetApplyBehaviour()
+        {
+            _currentlyEditedId = -1;
+            _applyBehaviour = new CreateExerciseApplyBehaviour();
+        }
+        
         private void Apply()
         {
             var read = ReadScreen();
@@ -72,15 +81,9 @@ namespace FitnessApp.UIConcretes.Screens.ExerciseDetails
         
         #endregion
 
-        private void ResetApplyBehaviour()
-        {
-            _currentlyEditedId = -1;
-            _applyBehaviour = new CreateExerciseApplyBehaviour();
-        }
-
         private void PopulateScreen(int exerciseDataId)
         {
-            var data = domain.PerformSingleAction().GetExerciseData(exerciseDataId);
+            var data = domain.PerformSingleAction(false).GetExerciseData(exerciseDataId);
             _screenPopulator.Populate(new SimpleExerciseData(data));
         }
         

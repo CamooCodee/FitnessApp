@@ -8,18 +8,12 @@ namespace FitnessApp.UIConcretes.ExerciseComponentMonos
     {
         public void ReadInto(SimpleExerciseData data)
         {
-            int componentId = data.exerciseId;
-            
-            var performanceArgs = GetArgs(componentId);
+            var performanceArgs = ReadUserInputAndReturnAsComponentArgs();
             if(performanceArgs == null) return;
-            
-            bool isOverwritingExitingComponent = componentId >= 0;
-            if(isOverwritingExitingComponent)
-                data.performance.RemoveArgs(componentId);
             
             data.performance.AddArgs(performanceArgs);
         }
 
-        protected abstract PerformanceComponentArgs GetArgs(int id = -1);
+        protected abstract PerformanceComponentArgs ReadUserInputAndReturnAsComponentArgs(int id = -1);
     }
 }

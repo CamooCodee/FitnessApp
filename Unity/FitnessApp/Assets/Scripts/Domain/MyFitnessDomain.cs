@@ -10,9 +10,9 @@ namespace FitnessApp.Domain
     {
         [SerializeField] private UnityEvent onSingleAction;
 
-        private List<IDomainCommand> _commandList = new List<IDomainCommand>();
-        private bool _isRecording = false;
-        
+        private readonly List<IDomainCommand> _commandList = new List<IDomainCommand>();
+        private bool _isRecording;
+
         public void Record()
         {
             if (_isRecording)
@@ -77,14 +77,14 @@ namespace FitnessApp.Domain
             _isRecording = false;
         }
         
-        public FitnessApiFacade PerformSingleAction()
+        public FitnessApiFacade PerformSingleAction(bool invokeEvent = true)
         {
             if (_isRecording)
             {
                 Debug.LogWarning("Cannot perform single actions while the record mode is active.");
                 return new FitnessApiFacade();
             }
-            StartCoroutine(InvokeSingleActionEvent());
+            if(invokeEvent) StartCoroutine(InvokeSingleActionEvent());
             return AppAPI;
         }
 

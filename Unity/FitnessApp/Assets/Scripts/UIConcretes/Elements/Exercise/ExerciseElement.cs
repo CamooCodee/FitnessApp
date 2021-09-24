@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using FitnessApp.UICore;
 using FitnessAppAPI;
 using TMPro;
 using UIConcretes.Elements;
@@ -9,7 +8,7 @@ using UnityEngine.Events;
 
 namespace FitnessApp.UIConcretes.Elements.Exercise
 {
-    public class ExerciseElement : DropdownElementMono
+    public class ExerciseElement : DefaultElement
     {
         [Serializable] // The icon-value pair in the visual exercise element.
         private class ComponentDisplay
@@ -36,41 +35,61 @@ namespace FitnessApp.UIConcretes.Elements.Exercise
         [Space(10f)]
         [SerializeField] private List<ComponentDisplay> componentDisplayList = new List<ComponentDisplay>();
 
-        public int Id { get; set; }
-
-        private List<UnityEvent<int>> _onDelete = new List<UnityEvent<int>>();
-        private List<UnityEvent<int>> _onCopy = new List<UnityEvent<int>>();
-        private List<UnityEvent<int>> _onEdit = new List<UnityEvent<int>>();
+        protected ExerciseData CurrentData { get; private set; }
 
         public void SetData(ExerciseData data)
         {
+            CurrentData = data ?? throw new ArgumentException("Cannot set data to null!");
+            bool receivedNewId = data.id != Id;
             Id = data.id;
-            exerciseNameText.text = data.name;
+            OnNewData(CurrentData, receivedNewId);
+            UpdateDisplay();
+        }
+        
+        protected void UpdateDisplay()
+        {
+            exerciseNameText.text = CurrentData.name;
             for (var i = 0; i < componentDisplayList.Count; i++)
             {
                 bool componentDisplayIsUsed = false;
-                for (int j = 0; j < data.performance.Count; j++)
+                for (int j = 0; j < CurrentData.performance.Count; j++)
                 {
-                    if (componentDisplayList[i].componentType == data.performance[j].GetPerformanceType())
-                    {
-                        componentDisplayList[i].textDisplay.text = data.performanceValues[j];
-                        componentDisplayIsUsed = true;
-                    }
+                    if (componentDisplayList[i].componentType != CurrentData.performance[j].GetPerformanceType()) continue;
+                    
+                    componentDisplayList[i].textDisplay.text = GetPerformanceValue(CurrentData, j);
+                    componentDisplayIsUsed = true;
                 }
-                if(!componentDisplayIsUsed) componentDisplayList[i].displayGameObject.SetActive(false);
+                componentDisplayList[i].displayGameObject.SetActive(componentDisplayIsUsed);
             }
         }
 
+        protected virtual string GetPerformanceValue(ExerciseData data, int currentComponentIndex)
+        {
+            return data.performanceValues[currentComponentIndex];
+        }
+
+        protected virtual void OnNewData(ExerciseData data, bool receivedNewId)
+        {
+            
+        }
+        
         #region Initialization
 
         private void Awake()
         {
+            Setup();
+        }
+
+        /// <summary>
+        /// Equivalent to Awake
+        /// </summary>
+        protected virtual void Setup()
+        {
             InitializeDropdown();
-            
             ClearEmptyComponentDisplays();
             exerciseNameText.Require(this);
         }
-
+        
         /// <summary>
         /// [Initialization Method]
         /// Removes entries which aren't fully set in the inspector.
@@ -79,38 +98,13 @@ namespace FitnessApp.UIConcretes.Elements.Exercise
         {
             for (var i = 0; i < componentDisplayList.Count; i++)
             {
-                if (!componentDisplayList[i].IsFullyInitialized)
-                {
-                    componentDisplayList.RemoveAt(i);
-                    i--;
-                }
+                if (componentDisplayList[i].IsFullyInitialized) continue;
+                
+                componentDisplayList.RemoveAt(i);
+                i--;
             }
         }
 
-        #endregion
-
-        #region Dropdown Functionallity
-        
-        public void ListenForDelete(UnityEvent<int> func) => _onDelete.Add(func);
-        public void ListenForEdit(UnityEvent<int> func) => _onEdit.Add(func);
-        public void ListenForCopy(UnityEvent<int> func) => _onCopy.Add(func);
-
-        public void Delete() => InvokeEvent(_onDelete);
-        public void Edit() => InvokeEvent(_onEdit);
-        public void Copy() => InvokeEvent(_onCopy);
-
-        void InvokeEvent(List<UnityEvent<int>> onEvent)
-        {
-            for (var i = 0; i < onEvent.Count; i++)
-            {
-                for(int j = 0 ; j < onEvent[i].GetPersistentEventCount();j++ )
-                {    
-                    ((MonoBehaviour)onEvent[j].GetPersistentTarget(j))
-                        .SendMessage(onEvent[j].GetPersistentMethodName(j),Id);
-                }
-            }
-        }
-        
         #endregion
     }
 }

@@ -27,7 +27,7 @@ namespace FitnessApp
             if(required != null) return true;
             if (!logError) return false;
             
-            if(context == null) Debug.LogError($"A '{typeof(T).Name} is required somewhere!");
+            if(context == null) Debug.LogError($"A '{typeof(T).Name}' is required somewhere!");
             else Debug.LogError($"A '{typeof(T).Name}' is required on '{context.name}'!", context);
             return false;
         }
@@ -94,6 +94,11 @@ namespace FitnessApp
             }
 
             return amount;
+        }
+
+        public static float RoundToTwoDecimals(this float f)
+        {
+            return (float) Math.Round(f * 100f) / 100f;
         }
     }
 }

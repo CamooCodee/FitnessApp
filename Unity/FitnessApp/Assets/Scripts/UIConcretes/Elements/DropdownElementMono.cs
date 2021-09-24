@@ -14,7 +14,7 @@ namespace UIConcretes.Elements
         private float _withDropdownHeight;
         private bool _dropdownIsActive = false;
 
-        private Action _onExpand;
+        private event Action onExpand;
         
         private float AnimationLength
         {
@@ -94,8 +94,22 @@ namespace UIConcretes.Elements
                     AnimationLength)
                 .setEase(AnimationEaseType);
         }
+        private void SnapTweenDropdown(float targetY)
+        {
+            LeanTween.cancel(gameObject);
+            LeanTween.size(_rectTransform, new Vector2(_rectTransform.sizeDelta.x, targetY),
+                    0.08f)
+                .setEase(AnimationEaseType);
+        }
 
-        public void ListenForOnExpand(Action func) => _onExpand += func;
-        private void InvokeOnExpand() => _onExpand?.Invoke();
+        public void ListenForOnExpand(Action func) => onExpand += func;
+        private void InvokeOnExpand() => onExpand?.Invoke();
+
+        public void SnapHide()
+        {
+            if(!_dropdownIsActive) return;
+            SnapTweenDropdown(_noDropdownHeight);
+            _dropdownIsActive = false;
+        }
     }
 }

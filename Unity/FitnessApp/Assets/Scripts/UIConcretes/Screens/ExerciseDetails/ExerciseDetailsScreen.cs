@@ -17,38 +17,15 @@ namespace FitnessApp.UIConcretes.Screens.ExerciseDetails
 
         private void Awake()
         {
-            SetupBehaviours();
+            SetupBehaviours<IExerciseScreenBehaviour, ExerciseDetailsScreen>(out _behaviours);
             ListenForScreenClose(ClearAllEvents);
-            ListenForScreenOpen(InvokeOpenEvent);
+            ListenForScreenOpen(InvokeOpen);
             CreateSnapshotForAllEvents();
         }
-
-        void SetupBehaviours()
-        {
-            FindBehaviours();
-            InitializeBehaviours();
-        }
         
-        void FindBehaviours()
+        void InvokeOpen()
         {
-            _behaviours = GetComponents<IExerciseScreenBehaviour>();
-            if (_behaviours == null)
-            {
-                Debug.Log("No Screen Behaviours found!");
-                _behaviours = new IExerciseScreenBehaviour[0];
-            }
-        }
-        
-        void InitializeBehaviours()
-        {
-            for (var i = 0; i < _behaviours.Length; i++)
-                _behaviours[i].Initialize(this);
-        }
-
-        void InvokeOpenEvent()
-        {
-            for (var i = 0; i < _behaviours.Length; i++) 
-                _behaviours[i].OnScreenOpen(this);
+            InvokeOpenEvent<IExerciseScreenBehaviour, ExerciseDetailsScreen>(ref _behaviours);
         }
 
         void ClearAllEvents()

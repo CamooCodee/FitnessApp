@@ -5,7 +5,7 @@ namespace FitnessApp.UIConcretes.ExerciseComponentMonos
 {
     public abstract class ComponentPopulator : MonoBehaviour
     {
-        protected T GetArgs<T>(SimpleExerciseData data, PerformanceType argType) where T : PerformanceComponentArgs
+        protected static T GetArgs<T>(SimpleExerciseData data, PerformanceType argType) where T : PerformanceComponentArgs
         {
             T args = default;
 

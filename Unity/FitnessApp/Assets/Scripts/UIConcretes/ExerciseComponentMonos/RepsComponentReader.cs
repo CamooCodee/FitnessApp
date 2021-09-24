@@ -8,7 +8,7 @@ namespace FitnessApp.UIConcretes.ExerciseComponentMonos
     {
         [SerializeField] private TMP_InputField repsInput;
         
-        protected override PerformanceComponentArgs GetArgs(int id = -1)
+        protected override PerformanceComponentArgs ReadUserInputAndReturnAsComponentArgs(int id = -1)
         {
             int reps;
             if (repsInput.text == "") reps = 0;

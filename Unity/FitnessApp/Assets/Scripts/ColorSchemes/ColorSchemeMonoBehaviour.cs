@@ -28,18 +28,11 @@ namespace ColorSchemes
 
         public static bool TryToActAsSettingsObject(ISetting<IColorSchemeEventArgs> setting, bool forceOverwrite = false)
         {
-            if (GlobalSetting == null || forceOverwrite)
-            {
-                bool ret = false;
-                
-                if (GlobalSetting == null || GlobalSetting.Equals(setting)) ret = true;
-
-                GlobalSetting = setting;
-                return ret;
-            }
-
-            if (GlobalSetting.Equals(setting)) return true;
-            return false;
+            if (GlobalSetting != null && !forceOverwrite) return GlobalSetting.Equals(setting);
+            
+            bool ret = GlobalSetting == null || GlobalSetting.Equals(setting);
+            GlobalSetting = setting;
+            return ret;
         }
 
         protected void ListenForSettingsUpdate()
@@ -50,7 +43,8 @@ namespace ColorSchemes
             }
             else Debug.LogWarning("Didn't add listener due to missing setting. There should be ONE settings object in the scene. You can find it at 'Add Component > Color Schemes > Setting - Color Schemes'.");
         }
-        protected void StopListeningForSettingsUpdated()
+
+        private void StopListeningForSettingsUpdated()
         {
             if (GlobalSetting != null)
             {

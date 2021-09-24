@@ -1,16 +1,13 @@
 ﻿using System;
 using FitnessApp;
-using FitnessApp.Domain;
 using FitnessAppAPI;
 using TMPro;
 using UnityEngine;
 
 namespace UIConcretes.Elements.Workout
 {
-    public class WorkoutElement : DropdownElementMono
+    public class WorkoutElement : DefaultElement
     {
-        [SerializeField] private MyFitnessDomain domain;
-        
         [SerializeField] private TextMeshProUGUI nameDisplay;
         [SerializeField] private TextMeshProUGUI lastSessionDisplay;
         [SerializeField] private TextMeshProUGUI exerciseAmountDisplay;
@@ -32,6 +29,7 @@ namespace UIConcretes.Elements.Workout
         
         public void SetData(WorkoutData data)
         {
+            Id = data.id;
             nameDisplay.text = data.name;
             lastSessionDisplay.text = GetLastSessionTextByData(data.lastSession);
             exerciseAmountDisplay.text = data.GetExerciseAmount().ToString();
@@ -49,7 +47,7 @@ namespace UIConcretes.Elements.Workout
             if (span.Hours > 1) return $"{span.Hours} hours ago";
             if (span.Minutes == 1) return $"{span.Minutes} minute ago";
             if (span.Minutes > 1) return $"{span.Minutes} minutes ago";
-            else return "just finished";
+            return "just finished";
         }
     }
 }

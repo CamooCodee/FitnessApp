@@ -36,7 +36,7 @@ namespace UIConcretes.Elements.Manager
 
         void OnDropdownExpand(DropdownElementMono element)
         {
-            if(_currentlyExpanded != null) _currentlyExpanded.HideDropdown();
+            if(_currentlyExpanded != null && _currentlyExpanded != element) _currentlyExpanded.HideDropdown();
             _currentlyExpanded = element;
         }
     }

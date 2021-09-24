@@ -14,7 +14,7 @@ namespace FitnessApp.UIConcretes.ExerciseComponentMonos
             var performance = GetArgs<RepsComponentArgs>(data, PerformanceType.Reps);
             if (performance == null)
             {
-                Debug.LogWarning("Trying to populate component which doesn't have corresponding data!");
+                Debug.LogWarning("Trying to populate a component with data that doesn't contain anything that is supported by the component!");
                 return;
             }
             repsField.text = performance.RepAmount.ToString();
