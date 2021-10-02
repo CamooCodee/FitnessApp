@@ -7,6 +7,7 @@ namespace FitnessApp.UICore.Screens
     public abstract class Screen : MonoBehaviour
     {
         [SerializeField] private UnityEvent onScreenOpen;
+        [SerializeField] private UnityEvent onScreenReOpen;
         [SerializeField] private UnityEvent onScreenClose;
         private bool _isOpen;
         
@@ -20,6 +21,16 @@ namespace FitnessApp.UICore.Screens
             onScreenOpen?.Invoke();
             _isOpen = true;
         }
+        public void ReOpen()
+        {
+            if (!_isOpen)
+            {
+                Debug.Log("Can't reopen fully closed screen!");
+                return;
+            }
+            
+            onScreenReOpen?.Invoke();
+        }
         public void Close()
         {
             if (!_isOpen)
@@ -32,6 +43,10 @@ namespace FitnessApp.UICore.Screens
         }
 
         public void ListenForScreenOpen(UnityAction action)
+        {
+            onScreenOpen.AddListener(action);
+        }
+        public void ListenForScreenReOpen(UnityAction action)
         {
             onScreenOpen.AddListener(action);
         }

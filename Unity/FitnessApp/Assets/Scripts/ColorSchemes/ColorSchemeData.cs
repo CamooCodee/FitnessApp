@@ -9,7 +9,7 @@ namespace ColorSchemes
         public ColorScheme colorScheme;
         [SerializeField]
         private int selectedColorIndex = 0;
-
+        
         public int GetSelectedColorIndex()
         {
             selectedColorIndex = Mathf.Clamp(selectedColorIndex, 0, colorScheme.ColorCount - 1);

@@ -22,11 +22,6 @@ namespace ColorSchemes
                     myTarget.AddSupportedScheme(schemes[i]);
                 }
             }
-
-            if (GUILayout.Button("Initialize With Current Color Scheme"))
-            {
-                myTarget.InitializeWithCurrentColorScheme();
-            }
         }
     }
 }

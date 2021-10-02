@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace FitnessApp
 {
@@ -9,6 +10,11 @@ namespace FitnessApp
         {
             DontDestroyOnLoad(this);
             GlobalValues.appIsRunning = true;
+        }
+        
+        private void Update()
+        {
+            GlobalValues.appIsFullyRunning = true;
         }
 
         private void OnApplicationQuit()

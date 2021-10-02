@@ -32,6 +32,7 @@ namespace FitnessApp.UIConcretes.Screens.ExerciseDetails
 
         private void Awake()
         {
+            domain.Require(this);
             InitializeInterfaceReferences();
             ResetApplyBehaviour();
         }

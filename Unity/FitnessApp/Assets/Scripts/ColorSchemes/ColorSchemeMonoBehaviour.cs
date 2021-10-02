@@ -1,4 +1,5 @@
-﻿using FitnessApp.Setting;
+﻿using FitnessApp;
+using FitnessApp.Setting;
 using UnityEngine;
 
 namespace ColorSchemes
@@ -12,7 +13,8 @@ namespace ColorSchemes
         private void Awake()
         {
             _canBeAutoAssigned = false;
-            GlobalSetting = null;
+            if(!GlobalValues.appIsFullyRunning)
+                GlobalSetting = null;
         }
 
         protected virtual void Setup()
@@ -28,6 +30,7 @@ namespace ColorSchemes
 
         public static bool TryToActAsSettingsObject(ISetting<IColorSchemeEventArgs> setting, bool forceOverwrite = false)
         {
+            if (setting == null) return true;
             if (GlobalSetting != null && !forceOverwrite) return GlobalSetting.Equals(setting);
             
             bool ret = GlobalSetting == null || GlobalSetting.Equals(setting);

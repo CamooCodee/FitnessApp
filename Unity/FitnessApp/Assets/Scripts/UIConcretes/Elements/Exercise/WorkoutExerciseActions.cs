@@ -1,3 +1,4 @@
+using System;
 using CustomAttributes;
 using FitnessApp.UIConcretes.Screens.ExerciseOffsets;
 using FitnessApp.UIConcretes.Screens.WorkoutDetails;
@@ -31,17 +32,20 @@ namespace FitnessApp.UIConcretes.Elements.Exercise
         
         public override void Copy(int exerciseId)
         {
-            _elementList.CopyExercise(exerciseId);
+            _elementList.CopyElement(exerciseId);
         }
         
         public override void Delete(int exerciseId)
         {
-            _elementList.RemoveExercise(exerciseId);
+            _elementList.RemoveElement(exerciseId);
         }
 
         public void EditOffset(int exerciseIndex)
         {
-            _exerciseOffsetter.StartOffset(exerciseIndex, _elementList.GetExerciseElementAt(exerciseIndex));
+            var exerciseElement = _elementList.GetElementAt(exerciseIndex) as WorkoutExerciseElement;
+            if(exerciseElement == null) throw new Exception("Trying to edit the offset of an element which isn't a WorkoutExerciseElement!");
+            
+            _exerciseOffsetter.StartOffset(exerciseIndex, exerciseElement);
             ScreenSlider.SlideAScreenIn(offsetExerciseScreen);
         }
     }

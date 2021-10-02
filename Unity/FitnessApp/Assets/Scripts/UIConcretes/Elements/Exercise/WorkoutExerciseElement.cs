@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using FitnessApp.UIConcretes.Screens.WorkoutDetails;
 using FitnessAppAPI;
 using UnityEngine.Events;
+using IWorkoutElement = UIConcretes.Elements.IWorkoutElement;
 
 namespace FitnessApp.UIConcretes.Elements.Exercise
 {
-    public class WorkoutExerciseElement : ExerciseElement, IWorkoutReadable, IWorkoutPopulatable
+    public class WorkoutExerciseElement : ExerciseElement, IWorkoutElement
     {
         private readonly List<UnityEvent<int>> _onEditOffset = new List<UnityEvent<int>>();
         private PerformanceArgs _offset = new PerformanceArgs();

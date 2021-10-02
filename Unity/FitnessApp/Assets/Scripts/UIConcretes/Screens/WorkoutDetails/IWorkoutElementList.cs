@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using FitnessApp.UIConcretes.Elements.Exercise;
+using IWorkoutElement = UIConcretes.Elements.IWorkoutElement;
 
 namespace FitnessApp.UIConcretes.Screens.WorkoutDetails
 {
@@ -7,11 +8,12 @@ namespace FitnessApp.UIConcretes.Screens.WorkoutDetails
     {
         // Used by buttons
         public void AddExercise(int id);
-        public void CopyExercise(int index);
-        public void RemoveExercise(int index);
-        public WorkoutExerciseElement GetExerciseElementAt(int index);
-        public WorkoutExerciseElement GetLastElement();
-        public IEnumerable<WorkoutExerciseElement> GetElements();
+        public void AddPause();
+        public void CopyElement(int index);
+        public void RemoveElement(int index);
+        public IWorkoutElement GetElementAt(int index);
+        public IWorkoutElement GetLastElement();
+        public IEnumerable<IWorkoutElement> GetElements();
         // Used by buttons
         public void UpdateList();
         public void Clear();

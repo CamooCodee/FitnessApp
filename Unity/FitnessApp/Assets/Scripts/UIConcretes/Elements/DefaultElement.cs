@@ -4,7 +4,7 @@ using UnityEngine.Events;
 
 namespace UIConcretes.Elements
 {
-    public class DefaultElement : DropdownElementMono
+    public abstract class DefaultElement : DropdownElementMono
     {
         public int Id { get; protected set; }
 
@@ -30,11 +30,7 @@ namespace UIConcretes.Elements
         {
             for (var i = 0; i < onEvent.Count; i++)
             {
-                for(int j = 0 ; j < onEvent[i].GetPersistentEventCount();j++ )
-                {    
-                    ((MonoBehaviour)onEvent[i].GetPersistentTarget(j))
-                        .SendMessage(onEvent[i].GetPersistentMethodName(j), parameter);
-                }
+                onEvent[i].Invoke(parameter);
             }
         }
         

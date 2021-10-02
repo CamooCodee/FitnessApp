@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace UIConcretes.Elements.Manager
 {
@@ -21,8 +20,7 @@ namespace UIConcretes.Elements.Manager
         
         private void FindDropdownElements()
         {
-            _elements = GetComponentsInChildren<DropdownElementMono>();
-            if(_elements == null) _elements = new DropdownElementMono[0];
+            _elements = GetComponentsInChildren<DropdownElementMono>() ?? new DropdownElementMono[0];
         }
 
         private void SetupDropdownElements()

@@ -4,7 +4,6 @@ using FitnessAppAPI;
 using TMPro;
 using UIConcretes.Elements;
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace FitnessApp.UIConcretes.Elements.Exercise
 {
@@ -13,6 +12,7 @@ namespace FitnessApp.UIConcretes.Elements.Exercise
         [Serializable] // The icon-value pair in the visual exercise element.
         private class ComponentDisplay
         {
+            public bool treatAsTime;
             public PerformanceType componentType;
             public GameObject displayGameObject;
             public TextMeshProUGUI textDisplay;
@@ -55,8 +55,12 @@ namespace FitnessApp.UIConcretes.Elements.Exercise
                 for (int j = 0; j < CurrentData.performance.Count; j++)
                 {
                     if (componentDisplayList[i].componentType != CurrentData.performance[j].GetPerformanceType()) continue;
-                    
-                    componentDisplayList[i].textDisplay.text = GetPerformanceValue(CurrentData, j);
+
+                    var performanceVal = GetPerformanceValue(CurrentData, j);
+                    if (componentDisplayList[i].treatAsTime)
+                        Extensions.TryParseTime(performanceVal, out performanceVal);
+
+                    componentDisplayList[i].textDisplay.text = performanceVal;
                     componentDisplayIsUsed = true;
                 }
                 componentDisplayList[i].displayGameObject.SetActive(componentDisplayIsUsed);

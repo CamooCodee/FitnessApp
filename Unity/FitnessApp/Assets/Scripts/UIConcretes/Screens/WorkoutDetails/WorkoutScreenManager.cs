@@ -22,6 +22,7 @@ namespace FitnessApp.UIConcretes.Screens.WorkoutDetails
         
         private void Awake()
         {
+            domain.Require(this);
             _reader = readerReference as IWorkoutReadable;
             _reader.Require(this);
             _populator = populatorReference as IWorkoutPopulatable;

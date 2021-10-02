@@ -8,7 +8,7 @@ namespace FitnessApp.UICore.MovableElementList
     {
         private event Action onStop;
 
-        private int _previousTouchCount = 0;
+        private int _previousTouchCount;
         
         private void Update()
         {

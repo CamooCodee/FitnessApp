@@ -36,6 +36,17 @@ namespace FitnessApp.UICore.UITabs
         
         private void Awake()
         {
+            Require();
+            InitCalls();
+        }
+
+        void InitCalls()
+        {
+            if (positions.Length >= 1) hoverObject.transform.position = positions[0].position;
+        }
+
+        void Require()
+        {
             tabGroup.Require(this);
             hoverObject.Require(this);
             tabGroup.AddListener(this);

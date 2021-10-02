@@ -12,9 +12,10 @@ namespace UIConcretes.Elements
         private RectTransform _rectTransform;
         private float _noDropdownHeight;
         private float _withDropdownHeight;
-        private bool _dropdownIsActive = false;
+        private bool _dropdownIsActive;
 
         private event Action onExpand;
+        private event Action onHide;
         
         private float AnimationLength
         {
@@ -77,6 +78,7 @@ namespace UIConcretes.Elements
             if(!_dropdownIsActive) return;
             TweenDropdown(_noDropdownHeight);
             _dropdownIsActive = false;
+            InvokeOnHide();
         }
         
         private void ExpandDropdown()
@@ -103,7 +105,9 @@ namespace UIConcretes.Elements
         }
 
         public void ListenForOnExpand(Action func) => onExpand += func;
+        public void ListenForOnHide(Action func) => onHide += func;
         private void InvokeOnExpand() => onExpand?.Invoke();
+        private void InvokeOnHide() => onHide?.Invoke();
 
         public void SnapHide()
         {

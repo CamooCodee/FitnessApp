@@ -6,7 +6,6 @@ using TMPro;
 
 namespace FitnessApp.UIConcretes.Screens.ExerciseDetails
 {
-    [AddComponentMenu("Element Controller - Exercises")]
     public class ExerciseScreenLogic : MonoBehaviour, IExercisePopulatable, IExerciseReadable, IExerciseScreenBehaviour
     {
         [SerializeField] private TMP_InputField nameInput;

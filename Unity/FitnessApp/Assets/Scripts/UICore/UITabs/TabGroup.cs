@@ -7,9 +7,9 @@ namespace FitnessApp.UICore.UITabs
     [AddComponentMenu("Ui Tabs/Group - Tabs")]
     public class TabGroup : MonoBehaviour
     {
-        Dictionary<TabButton, int> _unsortedButtonPriorities = new Dictionary<TabButton, int>();
+        readonly Dictionary<TabButton, int> _unsortedButtonPriorities = new Dictionary<TabButton, int>();
         private TabButton[] _sortedButtons;
-        private List<ITabSelectionListener> _listeners = new List<ITabSelectionListener>();
+        private readonly List<ITabSelectionListener> _listeners = new List<ITabSelectionListener>();
 
         private bool _buttonActionsAreInitialized = false;
         
@@ -27,7 +27,7 @@ namespace FitnessApp.UICore.UITabs
                 Debug.LogWarning("Buttons can only be added in Awake!");
                 return;
             }
-            if (button == null || priority <= 0 || _unsortedButtonPriorities.ContainsKey(button) ||
+            if (button == null || priority < 0 || _unsortedButtonPriorities.ContainsKey(button) ||
                 _unsortedButtonPriorities.ContainsValue(priority))
             {
                 Debug.LogWarning($"Can't add button. The values were invalid. Button: '{button}', Priority'{priority}'");

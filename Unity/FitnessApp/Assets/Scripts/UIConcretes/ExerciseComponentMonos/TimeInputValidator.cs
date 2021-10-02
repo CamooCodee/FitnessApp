@@ -22,6 +22,22 @@ namespace FitnessApp.UIConcretes.ExerciseComponentMonos
         
         public void OnNewValue(string text)
         {
+            // Whenever the value gets set in code => can't work with the input character
+            if (!inputField.isFocused)
+            {
+                var isAlreadyCorrectFormat = Extensions.CanBeParsedIntoTime(text);
+                if (isAlreadyCorrectFormat)
+                {
+                    _previousVal = text;
+                    inputField.text = _previousVal;
+                }
+                else
+                {
+                    Extensions.TryParseTime(text, out _previousVal);
+                    inputField.text = _previousVal;
+                }
+            }
+            
             if(_receivedNew) return;
             _receivedNew = true;
 
@@ -43,25 +59,16 @@ namespace FitnessApp.UIConcretes.ExerciseComponentMonos
                 inputField.text = _previousVal;
                 return;
             }
-            
-            switch (input.Length)
+
+            text = input.Length switch
             {
-                case 0:
-                    text = "00:00";
-                    break;
-                case 1:
-                    text = $"00:0{input}";
-                    break;
-                case 2:
-                    text = $"00:{input}";
-                    break;
-                case 3:
-                    text = $"0{input[0]}:{input[1]}{input[2]}";
-                    break;
-                case 4:
-                    text = $"{input[0]}{input[1]}:{input[2]}{input[3]}";
-                    break;
-            }
+                0 => "00:00",
+                1 => $"00:0{input}",
+                2 => $"00:{input}",
+                3 => $"0{input[0]}:{input[1]}{input[2]}",
+                4 => $"{input[0]}{input[1]}:{input[2]}{input[3]}",
+                _ => text
+            };
 
             inputField.text = text;
             _previousVal = text;

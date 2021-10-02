@@ -4,5 +4,6 @@
     {
         ColorSchemeData GetData(int index);
         void OnSelectedColorUpdated();
+        void CleanUp();
     }
 }

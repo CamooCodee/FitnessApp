@@ -8,7 +8,7 @@ namespace FitnessApp.UIConcretes.Screens.HomeExerciseList
 {
     public class MainExerciseList : FitnessAppMonoBehaviour
     {
-        protected IExerciseElementFactory elementFactory;
+        protected IExerciseElementFactory exerciseFactory;
 
         [SerializeField] private UIRebuilder rebuilder;
         [SerializeField] private RectTransform listRebuildTransform;
@@ -16,7 +16,7 @@ namespace FitnessApp.UIConcretes.Screens.HomeExerciseList
         private readonly List<ExerciseElement> _currentElements = new List<ExerciseElement>();
         private readonly List<int> _currentElementIds = new List<int>();
 
-        private void Awake()
+        protected virtual void Awake()
         {
             InitializeElementFactory();
             UpdateExerciseElements();
@@ -26,8 +26,8 @@ namespace FitnessApp.UIConcretes.Screens.HomeExerciseList
 
         void InitializeElementFactory()
         {
-            elementFactory = GetComponent<IExerciseElementFactory>();
-            elementFactory.Require(this);
+            exerciseFactory = GetComponent<IExerciseElementFactory>();
+            exerciseFactory.Require(this);
         }
         
         void InstantiateOrUpdateExerciseElements()
@@ -60,7 +60,8 @@ namespace FitnessApp.UIConcretes.Screens.HomeExerciseList
         }
         void InstantiateExerciseElement(ExerciseData data)
         {
-            var instance = elementFactory.InstantiateElement(data, transform);
+            if(exerciseFactory == null) return;
+            var instance = exerciseFactory.InstantiateElement(data, transform);
             _currentElements.Add(instance);
             _currentElementIds.Add(instance.Id);
         }
@@ -69,33 +70,19 @@ namespace FitnessApp.UIConcretes.Screens.HomeExerciseList
         {
             for (var i = 0; i < _currentElements.Count; i++)
             {
+                if(_currentElements[i] == null) continue;
                 if(_currentElements[i].Id != id) continue;
                 Destroy(_currentElements[i].gameObject);
             }
         }
-        
-        void DestroyExerciseElements()
-        {
-            for (int i = 0; i < _currentElements.Count; i++)
-            {
-                Destroy(_currentElements[i].gameObject);
-            }
-        }
-        
+
         public void UpdateExerciseElements()
         {
             InstantiateElements();
             Rebuild();
         }
 
-        public void RedrawExerciseElements()
-        {
-            DestroyExerciseElements();
-            InstantiateElements();
-            Rebuild();
-        }
-        
-        protected void Rebuild()
+        public void Rebuild()
         {
             rebuilder.RebuildUILayout(listRebuildTransform);
         }

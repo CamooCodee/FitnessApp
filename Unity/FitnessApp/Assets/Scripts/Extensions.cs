@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Text.RegularExpressions;
 using FitnessApp.UICore;
 using FitnessAppAPI;
 using UnityEngine;
@@ -99,6 +100,60 @@ namespace FitnessApp
         public static float RoundToTwoDecimals(this float f)
         {
             return (float) Math.Round(f * 100f) / 100f;
+        }
+        
+        public static bool TryParseTime(string s, out int length)
+        {
+            length = 0;
+            
+            if (s == "") return true;
+
+            if (!CanBeParsedIntoTime(s)) return false;
+
+            var split = s.Split(':');
+            if (split.Length != 2) return false;
+            string minutesS = split[0];
+            string secondsS = split[1];
+
+            int seconds = 0;
+            bool result = int.TryParse(minutesS, out var minutes);
+            result = result && int.TryParse(secondsS, out seconds);
+
+            if (!result) return false;
+
+            length = minutes * 60 + seconds;
+            return true;
+        }
+        
+        public static void TryParseTime(string lengthS, out string s)
+        {
+            if(!int.TryParse(lengthS, out int length))
+                throw new ArgumentException($"The length has to be parsable into an integer. '{lengthS}'", nameof(lengthS));
+            
+            ParseTime(length, out s);
+        }
+        
+        public static void ParseTime(int length, out string s)
+        {
+            int minutes = (int) Mathf.Floor(length / 60f);
+            int seconds = length % 60;
+
+            var minutesS = minutes.ToString();
+            if (minutes == 0) minutesS = "00";
+            else if (minutes < 10) minutesS = minutesS.Insert(0, "0");
+            
+            var secondsS = seconds.ToString();
+            if (seconds == 0) secondsS = "00";
+            else if (seconds < 10) secondsS = secondsS.Insert(0, "0");
+            
+            
+            s = $"{minutesS}:{secondsS}";
+        }
+
+        public static bool CanBeParsedIntoTime(string s)
+        {
+            var format = new Regex(@"^[0-9]{2}:[0-9]{2}");
+            return format.IsMatch(s);
         }
     }
 }

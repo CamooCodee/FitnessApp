@@ -92,6 +92,7 @@ public class ColorScheme : ScriptableObject
 
     public ColorSchemeColor GetColor(int index)
     {
+        if (colors.Count == 0) return new ColorSchemeColor(Color.black);
         return colors[index];
     }
     public ColorSchemeColor GetColor(string keyTag)

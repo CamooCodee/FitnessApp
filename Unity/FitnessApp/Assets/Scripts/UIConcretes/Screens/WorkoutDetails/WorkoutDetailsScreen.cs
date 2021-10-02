@@ -68,7 +68,7 @@ namespace FitnessApp.UIConcretes.Screens.WorkoutDetails
         
         public void InvokeOnCancel()
         {
-            onAddPause?.Invoke();
+            onCancel?.Invoke();
         }
     }
 }

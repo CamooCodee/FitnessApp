@@ -171,7 +171,7 @@ namespace ColorSchemes
         public void ReInitAll()
         {
             bool result = ColorSchemeMonoBehaviour.TryToActAsSettingsObject(this, true);
-            if (!result) Debug.LogWarning("Multiple Setting - Color Schemes detected! Definitely NOT recommended!", gameObject);
+            if (!result && Application.isPlaying) Debug.LogWarning("Multiple Color Scheme Settings detected! Definitely NOT recommended!", gameObject);
 
             var listeners = FindObjectsOfType<ColorSchemeMonoBehaviour>();
             
@@ -184,7 +184,7 @@ namespace ColorSchemes
             }
         }
 
-        public void InitSelf()
+        private void InitSelf()
         {
             bool result = ColorSchemeMonoBehaviour.TryToActAsSettingsObject(this);
             if (!result) Debug.LogWarning("Multiple Setting - Color Schemes detected!", gameObject);
@@ -195,6 +195,17 @@ namespace ColorSchemes
         {
             var helper = GetComponent<AutoColorSchemeSettingInitializer>();
             if(helper != null) helper.DestroyAll();
+        }
+
+        [ContextMenu("Remove Null Entries On All Color Scheme Elements")]
+        public void RemoveNullSchemesOnAllElements()
+        {
+            ReInitAll();
+            
+            for (var i = 0; i < SettingUpdateListeners.Count; i++)
+            {
+                (SettingUpdateListeners[i] as IColorSchemeElement)?.CleanUp();
+            }
         }
     }
 }

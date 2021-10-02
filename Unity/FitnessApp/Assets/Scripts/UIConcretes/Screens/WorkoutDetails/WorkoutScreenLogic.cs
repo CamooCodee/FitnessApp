@@ -1,4 +1,5 @@
 ﻿using CustomAttributes;
+using FitnessAppAPI;
 using TMPro;
 using UnityEngine;
 
@@ -36,8 +37,15 @@ namespace FitnessApp.UIConcretes.Screens.WorkoutDetails
             
             foreach (var workoutDataElement in data.elements)
             {
-                _elementList.AddExercise(workoutDataElement.GetId());
-                _elementList.GetLastElement()?.Populate(data);
+                if (workoutDataElement is OffsetExerciseData)
+                {
+                    _elementList.AddExercise(workoutDataElement.GetId());
+                    _elementList.GetLastElement()?.Populate(data);
+                }
+                else if (workoutDataElement is PauseData)
+                {
+                    _elementList.AddPause();
+                }
             }
             
             var elements = _elementList.GetElements();
@@ -61,7 +69,7 @@ namespace FitnessApp.UIConcretes.Screens.WorkoutDetails
 
         void ResetUI()
         {
-            nameInput.text = defaultName;
+            nameInput.text = "";
             _elementList.Clear();
         }
     }

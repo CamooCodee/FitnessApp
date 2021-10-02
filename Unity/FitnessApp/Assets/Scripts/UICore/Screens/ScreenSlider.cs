@@ -10,6 +10,7 @@ namespace FitnessApp.UICore.Screens
         [SerializeField] private LeanTweenAnimationSpec animationSpec;
         [SerializeField] private Transform slideOrigin;
         [SerializeField] private Transform slideTarget;
+        [SerializeField] private Transform homeScreen;
         
         private float AnimationLength
         {
@@ -28,7 +29,7 @@ namespace FitnessApp.UICore.Screens
             }
         }
 
-        private Stack<GameObject> _currentScreenObjects = new Stack<GameObject>();
+        private readonly Stack<GameObject> _currentScreenObjects = new Stack<GameObject>();
 
         private void OnValidate()
         {
@@ -55,24 +56,22 @@ namespace FitnessApp.UICore.Screens
 
         public void SlideAScreenOut()
         {
-            bool atLeastOneScreenInStack = _currentScreenObjects.Count > 0;
-            if (atLeastOneScreenInStack)
-            {
-                var screen = _currentScreenObjects.Peek();
-                SlideOut();
-            }
+            if (_currentScreenObjects.Count <= 0) return;
+            
+            SlideOut();
         }
 
         void SlideIn(GameObject screen)
         {
             if(screen == null) return;
-
+            screen.SetActive(true);
             var originPosition = slideOrigin.position;
             
             screen.transform.position = originPosition;
             LeanTween.cancel(screen);
             LeanTween.move(screen, slideTarget.position, AnimationLength)
-                .setEase(AnimationEaseType);
+                .setEase(AnimationEaseType)
+                .setOnComplete(OnSlideInComplete);
                 
             screen.transform.SetAsLastSibling();
         }
@@ -80,6 +79,10 @@ namespace FitnessApp.UICore.Screens
         void SlideOut()
         {
             var toSlideOut = _currentScreenObjects.Pop();
+            var nextScreen = GetNextScreen();
+            if(nextScreen != null) nextScreen.SetActive(true);
+            
+            InvokeReopenEventOnScreen(nextScreen);
             
             LeanTween.cancel(toSlideOut);
             LeanTween.move(toSlideOut, slideOrigin.position, AnimationLength)
@@ -89,20 +92,49 @@ namespace FitnessApp.UICore.Screens
         
         void OnSlideOutComplete(Transform t)
         {
-            SetAsFirstChild(t);    
-            InvokeCloseOnScreen(t.gameObject);
+            var nextScreen = GetNextScreen();
+            if(nextScreen != null) nextScreen.transform.SetAsLastSibling();
+            DisableAllApartFromLastSibling();
+            InvokeCloseEventOnScreen(t.gameObject);
+        }
+
+        void OnSlideInComplete()
+        {
+            DisableAllApartFromLastSibling();
         }
         
-        void InvokeCloseOnScreen(GameObject screenObject)
+        void InvokeCloseEventOnScreen(GameObject screenObject)
         {
             if (screenObject.TryGetComponent(out Screen screen)) screen.Close();
             else Debug.Log("Sliding out a screen without a Screen component!");
         }
 
-        void SetAsFirstChild(Transform t)
+        void InvokeReopenEventOnScreen(GameObject screenGo)
         {
-            if(t != null)
-                t.SetAsFirstSibling();
+            if (screenGo.TryGetComponent(out Screen screen)) screen.ReOpen();
+        }
+        
+        void DisableAllApartFromLastSibling()
+        {
+            var count = transform.childCount;
+            if(count <= 1) return;
+            
+            for (int i = 0; i < count - 1; i++)
+            {
+                var go = transform.GetChild(i).gameObject;
+                go.SetActive(false);
+            }
+
+            var last = transform.GetChild(count - 1).gameObject;
+            last.SetActive(true);
+        }
+
+        GameObject GetNextScreen()
+        {
+            if(_currentScreenObjects.Count > 0)
+                return _currentScreenObjects.Peek();
+            
+            return homeScreen != null ? homeScreen.gameObject : null;
         }
     }
 }

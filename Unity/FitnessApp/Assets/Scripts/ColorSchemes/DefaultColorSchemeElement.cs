@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using FitnessAppAPI;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -30,7 +31,8 @@ namespace ColorSchemes
 
         [SerializeField, HideInInspector]
         private int selectedSchemeIndex = - 1;
-        public ColorSchemeData SelectedScheme
+
+        private ColorSchemeData SelectedScheme
         {
             get
             {
@@ -65,7 +67,9 @@ namespace ColorSchemes
             for (var i = 0; i < supportedColorSchemes.Count; i++)
             {
                 var scheme = supportedColorSchemes[i].colorScheme;
-
+                
+                if(scheme == null) continue;
+                
                 if (alreadyAddedSchemes.Contains(scheme))
                 {
                     supportedColorSchemes[i].colorScheme = null;
@@ -78,7 +82,7 @@ namespace ColorSchemes
 
         #endregion
         
-        private bool _started = false;
+        private bool _started;
         
         private void Start()
         {
@@ -129,7 +133,9 @@ namespace ColorSchemes
                     return;
                 }
             }
-            Debug.LogWarning($"Didn't find supported color scheme for '{scheme.name}'.");
+
+            bool isSetup = supportedColorSchemes.Count > 0;
+            if(isSetup) Debug.LogWarning($"Element doesn't support '{scheme.name}' scheme.");
         }
 
         void SetTargetElementColor(Color color)
@@ -138,8 +144,8 @@ namespace ColorSchemes
             TargetElement.enabled = false;
             TargetElement.enabled = true;
         }
-        
-        public bool SupportsScheme(string schemeName)
+
+        private bool SupportsScheme(string schemeName)
         {
             for (var i = 0; i < supportedColorSchemes.Count; i++)
             {
@@ -154,10 +160,7 @@ namespace ColorSchemes
         {
             if (!SupportsScheme(scheme.name))
             {
-                supportedColorSchemes.Add(new ColorSchemeData()
-                {
-                    colorScheme = scheme
-                });
+                supportedColorSchemes.Add(new ColorSchemeData { colorScheme = scheme});
             }
         }
 
@@ -166,9 +169,16 @@ namespace ColorSchemes
             return base.CanBeAutoAssigned() && HasGraphic;
         }
 
-        public void InitializeWithCurrentColorScheme()
+        public void CleanUp()
         {
-            ListenForSettingsUpdate();
+            for (var i = 0; i < supportedColorSchemes.Count; i++)
+            {
+                if (supportedColorSchemes[i] == null || supportedColorSchemes[i].colorScheme == null)
+                {
+                    supportedColorSchemes.RemoveAt(i);
+                    i--;
+                }
+            }
         }
     }
 }
