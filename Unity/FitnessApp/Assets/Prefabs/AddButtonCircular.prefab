@@ -25,7 +25,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1069879381883955447}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -57,15 +57,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.72300005, g: 0.72300005, b: 0.72300005, a: 1}
+  m_Material: {fileID: 2100000, guid: 9e5d9591970cd02449ac140c29808e4e, type: 2}
+  m_Color: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 8ea491ff0f3ebf744b2b1bbbb9b0ba6b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: dd1337e295783d44abd3ee7f01f37a4f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -166,9 +166,9 @@ MonoBehaviour:
   supportedColorSchemes:
   - colorScheme: {fileID: 11400000, guid: 132a2118153dc8a40b7bafa773337c1f, type: 2}
     selectedColorIndex: 3
-  - colorScheme: {fileID: 11400000, guid: 53c0a232c7375b948975d1db2faafbce, type: 2}
+  - colorScheme: {fileID: 0}
     selectedColorIndex: 0
-  - colorScheme: {fileID: 11400000, guid: 2993948e09f81b24c9ec27fd7b3374f3, type: 2}
+  - colorScheme: {fileID: 0}
     selectedColorIndex: 0
   selectedSchemeIndex: 0
 --- !u!1 &6063942517837604026
@@ -266,9 +266,9 @@ MonoBehaviour:
   supportedColorSchemes:
   - colorScheme: {fileID: 11400000, guid: 132a2118153dc8a40b7bafa773337c1f, type: 2}
     selectedColorIndex: 6
-  - colorScheme: {fileID: 11400000, guid: 53c0a232c7375b948975d1db2faafbce, type: 2}
+  - colorScheme: {fileID: 0}
     selectedColorIndex: 0
-  - colorScheme: {fileID: 11400000, guid: 2993948e09f81b24c9ec27fd7b3374f3, type: 2}
+  - colorScheme: {fileID: 0}
     selectedColorIndex: 0
   selectedSchemeIndex: 0
 --- !u!1 &6063942519290657155
@@ -412,9 +412,9 @@ MonoBehaviour:
   supportedColorSchemes:
   - colorScheme: {fileID: 11400000, guid: 132a2118153dc8a40b7bafa773337c1f, type: 2}
     selectedColorIndex: 5
-  - colorScheme: {fileID: 11400000, guid: 53c0a232c7375b948975d1db2faafbce, type: 2}
+  - colorScheme: {fileID: 0}
     selectedColorIndex: 0
-  - colorScheme: {fileID: 11400000, guid: 2993948e09f81b24c9ec27fd7b3374f3, type: 2}
+  - colorScheme: {fileID: 0}
     selectedColorIndex: 0
   selectedSchemeIndex: 0
 --- !u!1 &6148400063230606572
@@ -508,9 +508,9 @@ MonoBehaviour:
   supportedColorSchemes:
   - colorScheme: {fileID: 11400000, guid: 132a2118153dc8a40b7bafa773337c1f, type: 2}
     selectedColorIndex: 1
-  - colorScheme: {fileID: 11400000, guid: 53c0a232c7375b948975d1db2faafbce, type: 2}
+  - colorScheme: {fileID: 0}
     selectedColorIndex: 0
-  - colorScheme: {fileID: 11400000, guid: 2993948e09f81b24c9ec27fd7b3374f3, type: 2}
+  - colorScheme: {fileID: 0}
     selectedColorIndex: 0
   selectedSchemeIndex: 0
 --- !u!1 &8155777089178928007
@@ -538,7 +538,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8155777089178928007}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -570,15 +570,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.7254902, g: 0.7254902, b: 0.7254902, a: 1}
+  m_Material: {fileID: 2100000, guid: 9e5d9591970cd02449ac140c29808e4e, type: 2}
+  m_Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 8ea491ff0f3ebf744b2b1bbbb9b0ba6b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: dd1337e295783d44abd3ee7f01f37a4f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
