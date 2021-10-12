@@ -99,13 +99,11 @@ namespace FitnessApp.UIConcretes.Screens.ExerciseDetails
         void SetEditHeader()
         {
             if(!ShouldSetHeader) return;
-
             header.text = "Edit Exercise";
         }
         void SetCreateHeader()
         {
             if(!ShouldSetHeader) return;
-
             header.text = "Create Exercise";
         }
     }

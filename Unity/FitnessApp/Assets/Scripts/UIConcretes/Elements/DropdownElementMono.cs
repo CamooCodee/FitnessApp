@@ -39,7 +39,12 @@ namespace UIConcretes.Elements
             dropdownHeightDifference = Mathf.Clamp(dropdownHeightDifference, 0f, 1080f);
         }
 
-        private bool _isInit = false;
+        private void OnDisable()
+        {
+            SnapHide();
+        }
+
+        private bool _isInit;
         
         protected void InitializeDropdown()
         {
@@ -89,11 +94,12 @@ namespace UIConcretes.Elements
             InvokeOnExpand();
         }
 
-        private void TweenDropdown(float targetY)
+        private void TweenDropdown(float targetY, Action onComplete = null)
         {
             LeanTween.cancel(gameObject);
             LeanTween.size(_rectTransform, new Vector2(_rectTransform.sizeDelta.x, targetY),
                     AnimationLength)
+                .setOnComplete(onComplete)
                 .setEase(AnimationEaseType);
         }
         private void SnapTweenDropdown(float targetY)

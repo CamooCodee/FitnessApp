@@ -771,13 +771,16 @@ MonoBehaviour:
   dropdownHeightDifference: 50
   exerciseNameText: {fileID: 8568455751099620335}
   componentDisplayList:
-  - componentType: 1
+  - treatAsTime: 1
+    componentType: 1
     displayGameObject: {fileID: 4400683659374105799}
     textDisplay: {fileID: 4010973646283090752}
-  - componentType: 2
+  - treatAsTime: 0
+    componentType: 2
     displayGameObject: {fileID: 1754770977051029892}
     textDisplay: {fileID: 1274254699410466139}
-  - componentType: 3
+  - treatAsTime: 0
+    componentType: 3
     displayGameObject: {fileID: 8229655724529417170}
     textDisplay: {fileID: 3480119024980232307}
 --- !u!114 &2999589491635565743

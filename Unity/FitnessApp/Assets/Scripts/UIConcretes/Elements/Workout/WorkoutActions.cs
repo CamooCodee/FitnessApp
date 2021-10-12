@@ -1,6 +1,7 @@
 ﻿using CustomAttributes;
 using FitnessApp;
 using FitnessApp.Domain;
+using FitnessApp.UIConcretes.FollowAlong;
 using FitnessApp.UIConcretes.Screens;
 using FitnessApp.UICore.Screens;
 using UnityEngine;
@@ -14,6 +15,8 @@ namespace UIConcretes.Elements.Workout
         private IElementEditor _workoutEditor;
         [SerializeField] private ScreenSlider screenSlider;
         [SerializeField] private GameObject editWorkoutScreen;
+        [SerializeField] private GameObject followAlongScreen;
+        [SerializeField] private FollowAlongManager followAlongManager; // TODO: Make this work against an interface
 
         private void Awake()
         {
@@ -39,6 +42,14 @@ namespace UIConcretes.Elements.Workout
         {
             _workoutEditor.StartEdit(workoutId);
             screenSlider.SlideAScreenIn(editWorkoutScreen);
+        }
+
+        public void Begin(int workoutId)
+        {
+            if(followAlongManager == null) return;
+
+            screenSlider.SlideAScreenIn(followAlongScreen);
+            followAlongManager.StartMode(workoutId);
         }
     }
 }

@@ -18,19 +18,28 @@ namespace FitnessApp.UICore.MovableElementList
 
         public void ListenForStop(Action func)
         {
-            if(onStop != null && (func == null || onStop.GetInvocationList().Contains(func))) return;
+            if(func == null || GetInvocationList(onStop).Contains(func)) return;
+            
             onStop += func;
         }
 
         public void StopListeningForStop(Action func)
         {
-            if(onStop == null || func == null || !onStop.GetInvocationList().Contains(func)) return;
+            if(func == null || !GetInvocationList(onStop).Contains(func)) return;
+            
             onStop -= func;
         }
 
         public void SetEnabled(bool val)
         {
             enabled = val;
+        }
+        
+        Delegate[] GetInvocationList(Action e)
+        {
+            if (e == null) return new Delegate[0];
+            
+            return e.GetInvocationList();
         }
     }
 }

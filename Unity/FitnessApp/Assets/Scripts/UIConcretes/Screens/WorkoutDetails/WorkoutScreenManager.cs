@@ -65,6 +65,7 @@ namespace FitnessApp.UIConcretes.Screens.WorkoutDetails
         {
             var populationData = domain.PerformSingleAction(false)
                 .GetWorkoutData(workoutId);
+
             var data = new SimpleWorkoutData(populationData);
             _populator.Populate(data);
         }

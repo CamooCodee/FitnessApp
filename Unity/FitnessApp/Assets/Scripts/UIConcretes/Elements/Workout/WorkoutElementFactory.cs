@@ -11,6 +11,7 @@ namespace UIConcretes.Elements.Workout
         [SerializeField] private UnityEvent<int> onDeleteWorkout;
         [SerializeField] private UnityEvent<int> onEditWorkout;
         [SerializeField] private UnityEvent<int> onCopyWorkout;
+        [SerializeField] private UnityEvent<int> onBeginWorkout;
         
         public WorkoutElement InstantiateElement(WorkoutData data, Transform elementContainer)
         {
@@ -26,6 +27,7 @@ namespace UIConcretes.Elements.Workout
             element.ListenForCopy(onCopyWorkout);
             element.ListenForEdit(onEditWorkout);
             element.ListenForDelete(onDeleteWorkout);
+            element.ListenForBegin(onBeginWorkout);
 
             return element;
         }

@@ -44,16 +44,19 @@ namespace FitnessApp.UIConcretes.Screens.ExerciseOffsets
 
         private void PopulateComponents(WorkoutExerciseElement element)
         {
-            var offset = element.GetOffset();
-            var performance = offset ?? new PerformanceArgs();
+            var o = element.GetOffset();
+            var offset = o ?? new PerformanceArgs();
             
             for (int i = 0; i < componentHolder.childCount; i++)
             {
                 var child = componentHolder.GetChild(i);
                 if(!child.gameObject.activeSelf) continue;
                 
-                var toPopulate = child.GetComponent<IExercisePopulatable>();
-                toPopulate?.Populate(new SimpleExerciseData("", performance));
+                var toPopulate = child.GetComponents<IExercisePopulatable>();
+                foreach (var pop in toPopulate)
+                    // Switch up offset and performance in order to allow reuse of the Component Populator components
+                    // The offset components should display the offset but they display the performance value of the data
+                    pop?.Populate(new SimpleOffsetExerciseData("", element.GetOriginal(), offset));
             }
         }
 
@@ -73,8 +76,9 @@ namespace FitnessApp.UIConcretes.Screens.ExerciseOffsets
                 var child = componentHolder.GetChild(i);
                 if(!child.gameObject.activeSelf) continue;
                 
-                var toRead = child.GetComponent<IExerciseReadable>();
-                toRead?.ReadInto(targetData);
+                var toRead = child.GetComponents<IExerciseReadable>();
+                
+                foreach (var readable in toRead) readable?.ReadInto(targetData);
             }
 
             return targetData.performance ?? new PerformanceArgs();

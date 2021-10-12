@@ -1,4 +1,5 @@
 ﻿using System;
+using TMPro;
 using UnityEngine;
 
 namespace FitnessApp.UICore.MovableElementList
@@ -26,8 +27,10 @@ namespace FitnessApp.UICore.MovableElementList
 
         private void Awake()
         {
-            SetupParentHandling();
+            _debugText = GameObject.Find("TouchDebugDisplay").GetComponent<TextMeshProUGUI>();
+            _debugText.text = "Found: Movable";
             GetRequiredComponents();
+            SetupParentHandling();
         }
 
         void GetRequiredComponents()
@@ -61,11 +64,15 @@ namespace FitnessApp.UICore.MovableElementList
             for (int i = 0; i < dragParentDistance; i++)
             {
                 parent = parent.parent;
-                if(parent == null)
+                if (parent == null)
+                {
+                    _debugText.text = "Exception";
                     throw new ArgumentOutOfRangeException($"{nameof(dragParentDistance)}");
+                }
             }
 
             onDragParent = parent;
+            _debugText.text = parent.name;
         }
         
         #endregion
@@ -87,7 +94,7 @@ namespace FitnessApp.UICore.MovableElementList
             _list.StartMovingElement(this);
             _isDragged = true;
         }
-
+        private TextMeshProUGUI _debugText;
         void OnDrag()
         {
             var receivedPos = _input.GetElementTargetPosition(_rectTransform);

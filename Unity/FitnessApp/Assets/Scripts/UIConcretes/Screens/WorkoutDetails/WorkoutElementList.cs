@@ -72,12 +72,9 @@ namespace FitnessApp.UIConcretes.Screens.WorkoutDetails
 
         void CopyExercise(WorkoutExerciseElement exercise, int index)
         {
-            var instance = exerciseFactory.InstantiateElement(AppAPI.GetExerciseData(exercise.Id), transform);
+            var offsetExData = new OffsetExerciseData(AppAPI.GetExerciseData(exercise.Id), exercise.GetOffset());
+            var instance = exerciseFactory.InstantiateElement(offsetExData, transform);
             instance.transform.SetSiblingIndex(index + 1);
-
-            var workoutExerciseInstance = instance as WorkoutExerciseElement;
-            if(workoutExerciseInstance != null)
-                workoutExerciseInstance.SetOffset(exercise.GetOffset());
         }
 
         void CopyPause(PauseElement pause, int index)

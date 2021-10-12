@@ -9,28 +9,40 @@ namespace FitnessApp.UICore.MovableElementList
         private event Action onStop;
 
         private int _previousTouchCount;
-        
+        private bool _shouldDetect;
+
         private void Update()
         {
-            if (_previousTouchCount == 1 && Input.touchCount != 1) onStop?.Invoke();
+            if(!_shouldDetect) return;
+            
+            if (_previousTouchCount == 1 && Input.touchCount <= 0) onStop?.Invoke();
             _previousTouchCount = Input.touchCount;
         }
 
         public void ListenForStop(Action func)
         {
-            if(onStop != null && func != null && onStop.GetInvocationList().Contains(func)) return;
+            if(func == null || GetInvocationList(onStop).Contains(func)) return;
+            
             onStop += func;
         }
 
         public void StopListeningForStop(Action func)
         {
-            if(onStop != null && func != null && !onStop.GetInvocationList().Contains(func)) return;
+            if(func == null || !GetInvocationList(onStop).Contains(func)) return;
+            
             onStop -= func;
         }
-
+        
         public void SetEnabled(bool val)
         {
-            enabled = val;
+            _shouldDetect = val;
+        }
+
+        Delegate[] GetInvocationList(Action e)
+        {
+            if (e == null) return new Delegate[0];
+            
+            return e.GetInvocationList();
         }
     }
 }

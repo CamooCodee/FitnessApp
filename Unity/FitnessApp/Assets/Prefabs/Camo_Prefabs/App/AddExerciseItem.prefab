@@ -1569,8 +1569,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -50.600174, y: -15}
-  m_SizeDelta: {x: 36, y: 18}
+  m_AnchoredPosition: {x: -52.209488, y: -15}
+  m_SizeDelta: {x: 39.2186, y: 18}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &4897412882257166751
 CanvasRenderer:
@@ -2419,13 +2419,16 @@ MonoBehaviour:
   dropdownHeightDifference: 50
   exerciseNameText: {fileID: 3105033475743666788}
   componentDisplayList:
-  - componentType: 1
+  - treatAsTime: 1
+    componentType: 1
     displayGameObject: {fileID: 6984045211677351244}
     textDisplay: {fileID: 7662832033776788171}
-  - componentType: 2
+  - treatAsTime: 0
+    componentType: 2
     displayGameObject: {fileID: 5018202461385357327}
     textDisplay: {fileID: 5499178272672214224}
-  - componentType: 3
+  - treatAsTime: 0
+    componentType: 3
     displayGameObject: {fileID: 3444007016807412313}
     textDisplay: {fileID: 7905457497552536056}
 --- !u!114 &8021503991765907060

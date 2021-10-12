@@ -14,6 +14,9 @@ namespace FitnessApp.UICore.UITabs
         [Space(10f)]
         [Header("Optional"), Space(20f)]
         [SerializeField] private LeanTweenAnimationSpec animationSpec;
+        [Space(10f)]
+        [Header("Settings"), Space(10f)] [SerializeField]
+        private bool initWith0IndexPosition = true;
 
         
         private float AnimationLength
@@ -42,7 +45,7 @@ namespace FitnessApp.UICore.UITabs
 
         void InitCalls()
         {
-            if (positions.Length >= 1) hoverObject.transform.position = positions[0].position;
+            if (initWith0IndexPosition && positions.Length >= 1) hoverObject.transform.position = positions[0].position;
         }
 
         void Require()

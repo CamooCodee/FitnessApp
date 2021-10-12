@@ -1,5 +1,4 @@
-﻿using FitnessApp;
-using FitnessApp.Domain;
+﻿using FitnessApp.Domain;
 
 namespace FitnessApp.UIConcretes.Screens.WorkoutDetails
 {

@@ -22,21 +22,37 @@ namespace FitnessApp.UIConcretes.Elements.Exercise
         public override ExerciseElement InstantiateElement(ExerciseData data, Transform elementContainer)
         {
             var element = base.InstantiateElement(data, elementContainer);
-            if (element == null || !(element is WorkoutExerciseElement))
+            if (element == null) return null;
+            
+            var workoutExerciseElement = element as WorkoutExerciseElement;
+            if (!(element is WorkoutExerciseElement))
             {
-                Debug.LogWarning("Not instantiating movable exercise elements with a movable exercise element factory.");
+                Debug.LogWarning("Not instantiating workout exercise elements with a workout exercise element factory.");
                 return element;
             }
             
-            var movableExerciseElement = (WorkoutExerciseElement) element;
-            movableExerciseElement.ListenForEditOffset(onEditOffset);
-            var offset = new PerformanceArgs();
-            for (var i = 0; i < data.performance.Count; i++)
+            workoutExerciseElement.ListenForEditOffset(onEditOffset);
+
+            return workoutExerciseElement;
+        }
+
+        protected override void SetData(ExerciseData data, ExerciseElement element)
+        {
+            var offsetData = data as OffsetExerciseData;
+            var weElement = element as WorkoutExerciseElement;
+            if (offsetData == null || weElement == null)
             {
-                offset.AddArgs(data.performance[i].GetCopyWithMainValueDefault());
+                base.SetData(data, element);
+                return;
             }
-            movableExerciseElement.SetOffset(offset);
-            return movableExerciseElement;
+            
+            element.SetData(offsetData.originalData);
+            var newOffset = new PerformanceArgs();
+            for (var i = 0; i < offsetData.offset.Count; i++)
+            {
+                newOffset.AddArgs(offsetData.offset[i].GetCopyWithInvalidId());
+            }
+            weElement.SetOffset(newOffset);
         }
     }
 

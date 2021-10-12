@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace FitnessApp.UIConcretes.Elements.Exercise
 {
-    public class WorkoutExerciseActions : ExerciseActions
+    public class WorkoutElementActions : ExerciseActions
     {
         [SerializeField, AcceptOnly(typeof(IWorkoutElementList))] private MonoBehaviour elementListReference;
         private IWorkoutElementList _elementList;

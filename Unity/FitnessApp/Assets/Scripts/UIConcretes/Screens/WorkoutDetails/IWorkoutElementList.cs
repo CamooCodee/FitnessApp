@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using FitnessApp.UIConcretes.Elements.Exercise;
 using IWorkoutElement = UIConcretes.Elements.IWorkoutElement;
 
 namespace FitnessApp.UIConcretes.Screens.WorkoutDetails

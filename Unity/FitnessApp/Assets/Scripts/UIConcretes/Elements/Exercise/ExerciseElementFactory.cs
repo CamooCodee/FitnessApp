@@ -28,12 +28,17 @@ namespace FitnessApp.UIConcretes.Elements.Exercise
                 return null;
             }
             
-            element.SetData(data);
+            SetData(data, element);
             element.ListenForDelete(onDeleteExercise);
             element.ListenForEdit(onEditExercise);
             element.ListenForCopy(onCopyExercise);
 
             return element;
+        }
+
+        protected virtual void SetData(ExerciseData data, ExerciseElement element)
+        {
+            element.SetData(data);
         }
     }
 }

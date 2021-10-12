@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using FitnessApp;
 using FitnessAppAPI;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace UIConcretes.Elements.Workout
 {
@@ -13,10 +15,19 @@ namespace UIConcretes.Elements.Workout
         [SerializeField] private TextMeshProUGUI exerciseAmountDisplay;
         [SerializeField] private TextMeshProUGUI pauseAmountDisplay;
         
+        protected readonly List<UnityEvent<int>> onBegin = new List<UnityEvent<int>>();
+
+        private DateTime _lastSession = DateTime.MinValue;
+        
         private void Awake()
         {
             Require();
             InitializeDropdown();
+        }
+
+        private void OnEnable()
+        {
+            UpdateLastSessionDisplay(_lastSession);
         }
 
         private void Require()
@@ -31,11 +42,17 @@ namespace UIConcretes.Elements.Workout
         {
             Id = data.id;
             nameDisplay.text = data.name;
-            lastSessionDisplay.text = GetLastSessionTextByData(data.lastSession);
+            _lastSession = data.lastSession;
+            UpdateLastSessionDisplay(_lastSession);
             exerciseAmountDisplay.text = data.GetExerciseAmount().ToString();
             pauseAmountDisplay.text = data.GetPauseAmount().ToString();
         }
 
+        void UpdateLastSessionDisplay(DateTime lastSession)
+        {
+            lastSessionDisplay.text = GetLastSessionTextByData(lastSession);
+        }
+        
         private static string GetLastSessionTextByData(DateTime date)
         {
             var span = DateTime.Now - date;
@@ -47,7 +64,12 @@ namespace UIConcretes.Elements.Workout
             if (span.Hours > 1) return $"{span.Hours} hours ago";
             if (span.Minutes == 1) return $"{span.Minutes} minute ago";
             if (span.Minutes > 1) return $"{span.Minutes} minutes ago";
+            if (span.Seconds > 10) return $"{span.Seconds} seconds ago";
             return "just finished";
         }
+        
+        public void ListenForBegin(UnityEvent<int> func)  => onBegin.Add(func);
+
+        public void Begin() => InvokeEvent(onBegin);
     }
 }

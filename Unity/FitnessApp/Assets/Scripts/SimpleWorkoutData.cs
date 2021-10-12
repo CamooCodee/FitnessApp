@@ -17,13 +17,6 @@ namespace FitnessApp
             name = string.Empty;
         }
 
-        public SimpleWorkoutData(string name, IEnumerable<IWorkoutDataElement> elements)
-        {
-            if(elements != null)
-                this.elements = elements.ToList();
-            this.name = name;
-        }
-
         public SimpleWorkoutData(WorkoutData src)
         {
             if (src == null)

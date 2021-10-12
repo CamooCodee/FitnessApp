@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace FitnessApp.UICore.UITabs
 {
@@ -13,7 +14,11 @@ namespace FitnessApp.UICore.UITabs
         [Space(10f)]
         [Header("Optional"), Space(20f)]
         [SerializeField] private LeanTweenAnimationSpec animationSpec;
+        [Space(8f)]
+        [SerializeField] private bool disableNonActives;
 
+        private int _current = -1;
+        private bool IsCurrentIndex(int index) => _current == index;
         
         private float AnimationLength
         {
@@ -41,16 +46,26 @@ namespace FitnessApp.UICore.UITabs
         
         public void SelectTab(int index)
         {
+            if(IsCurrentIndex(index)) return;
+            
             if (!index.IsValidIndexFor(screens))
             {
                 Debug.LogWarning($"The index '{index}' is invalid for the screen list with a length of {screens.Length}.");
                 return;
             }
 
-            MoveScreensToFitSelection(index);
+            if (disableNonActives)
+            {
+                EnableAll();
+                MoveScreensToFitSelection(index, delegate { DisableAll(index); });
+            }
+            else
+                MoveScreensToFitSelection(index);
+
+            _current = index;
         }
 
-        void MoveScreensToFitSelection(int selection)
+        void MoveScreensToFitSelection(int selection, Action onComplete = null)
         {
             var screen = screens[selection];
 
@@ -60,7 +75,8 @@ namespace FitnessApp.UICore.UITabs
             {
                 LeanTween.cancel(screens[i]);
                 LeanTween.move(screens[i], screens[i].transform.position + movement, AnimationLength)
-                    .setEase(AnimationEaseType);
+                    .setEase(AnimationEaseType)
+                    .setOnComplete(onComplete);
             }
         }
         
@@ -68,6 +84,22 @@ namespace FitnessApp.UICore.UITabs
         {
             Vector2 movementV2 = selectedScreenPosition.position - screen.transform.position;
             return new Vector3(movementV2.x, movementV2.y, 0f);
+        }
+        
+        void DisableAll(int apartFrom = -1)
+        {
+            for (var i = 0; i < screens.Length; i++)
+            {
+                screens[i].SetActive(i == apartFrom);
+            }
+        }
+        
+        void EnableAll()
+        {
+            for (var i = 0; i < screens.Length; i++)
+            {
+                screens[i].SetActive(true);
+            }
         }
     }
 }

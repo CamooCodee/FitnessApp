@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using FitnessAppAPI;
+using UnityEngine;
 using UnityEngine.Events;
 using IWorkoutElement = UIConcretes.Elements.IWorkoutElement;
 
@@ -60,10 +61,8 @@ namespace FitnessApp.UIConcretes.Elements.Exercise
             }
         }
 
-        public PerformanceArgs GetOffset()
-        {
-            return _offset;
-        }
+        public PerformanceArgs GetOffset() => _offset;
+        public PerformanceArgs GetOriginal() => CurrentData.performance;
 
         protected override string GetPerformanceValue(ExerciseData data, int currentComponentIndex)
         {
@@ -71,41 +70,6 @@ namespace FitnessApp.UIConcretes.Elements.Exercise
             var offsetCalculator = new OffsetCalculator(data.performance, _offset);
             
             return offsetCalculator.GetPerformanceValueFor(currentType);
-        }
-
-        private class OffsetCalculator
-        {
-            private readonly PerformanceArgs _offsetArgs;
-            private readonly PerformanceArgs _originalArgs;
-            
-            public OffsetCalculator(PerformanceArgs originalPerformance, PerformanceArgs offsetPerformance)
-            {
-                _offsetArgs = offsetPerformance ?? throw new ArgumentException("The offsetPerformance cannot be null!");
-                _originalArgs = originalPerformance ?? throw new ArgumentException("The originalPerformance cannot be null!");
-            }
-
-            public string GetPerformanceValueFor(PerformanceType type)
-            {
-                if (_offsetArgs.Count == 0) return "";
-                
-                var factory = new SimplePerformanceComponentFactory();
-                
-                for (int i = 0; i < _originalArgs.Count; i++)
-                {
-                    if(_originalArgs[i].GetPerformanceType() != type) continue;
-                    
-                    for (var j = 0; j < _offsetArgs.Count; j++)
-                    {
-                        if (type != _offsetArgs[j].GetPerformanceType()) continue;
-                        
-                        var originalComponent = factory.CreateComponentByArgs(_originalArgs[i]);
-                        var offsetComponent = factory.CreateComponentByArgs(_offsetArgs[j]);
-                        return originalComponent.Merge(offsetComponent).GetMainPerformanceValue();
-                    }
-                }
-
-                return "";
-            }
         }
 
         public void ReadInto(SimpleWorkoutData data)
@@ -118,7 +82,7 @@ namespace FitnessApp.UIConcretes.Elements.Exercise
         {
             var elements = data.elements.ToArray();
             var elementData = elements[transform.GetSiblingIndex()] as OffsetExerciseData;
-            
+
             if (elementData == null)
                 throw new Exception("Failed to populate. The data was null or not an offset exercise.");
             

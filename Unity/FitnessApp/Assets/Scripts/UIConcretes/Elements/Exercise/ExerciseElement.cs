@@ -9,26 +9,6 @@ namespace FitnessApp.UIConcretes.Elements.Exercise
 {
     public class ExerciseElement : DefaultElement
     {
-        [Serializable] // The icon-value pair in the visual exercise element.
-        private class ComponentDisplay
-        {
-            public bool treatAsTime;
-            public PerformanceType componentType;
-            public GameObject displayGameObject;
-            public TextMeshProUGUI textDisplay;
-
-            public bool IsFullyInitialized
-            {
-                get
-                {
-                    bool isInit = componentType != PerformanceType.None;
-                    isInit = isInit && displayGameObject != null;
-                    isInit = isInit && textDisplay != null;
-                    return isInit;
-                }
-            }
-        }
-        
         [Space(15f)]
         [Header("Information Display References"), Space(15f)]
         [SerializeField] private TextMeshProUGUI exerciseNameText;
