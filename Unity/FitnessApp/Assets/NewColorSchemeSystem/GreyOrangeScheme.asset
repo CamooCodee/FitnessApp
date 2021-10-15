@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e3a73dad7154fd2b279eb0111699560, type: 3}
+  m_Name: GreyOrangeScheme
+  m_EditorClassIdentifier: 
+  colors:
+  - name: Background
+    color: {r: 1, g: 1, b: 1, a: 1}
+  - name: Splash
+    color: {r: 1, g: 0.56078434, b: 0.3137255, a: 1}
+  - name: Main
+    color: {r: 0.24313727, g: 0.27058825, b: 0.29411766, a: 1}
+  - name: Element
+    color: {r: 0.34901962, g: 0.3764706, b: 0.39607844, a: 1}
+  - name: Highlight
+    color: {r: 0.8352941, g: 0.8509804, b: 0.8627451, a: 1}
+  - name: LightText
+    color: {r: 1, g: 1, b: 1, a: 1}
+  - name: DarkText
+    color: {r: 0, g: 0, b: 0, a: 1}
+  - name: PlaceholderText
+    color: {r: 0.78431374, g: 0.79607844, b: 0.80784315, a: 1}
+  - name: MainDarker
+    color: {r: 0.21176471, g: 0.23137255, b: 0.24705882, a: 1}
+  - name: SplashDarker
+    color: {r: 0.83137256, g: 0.43529412, b: 0.21176471, a: 1}

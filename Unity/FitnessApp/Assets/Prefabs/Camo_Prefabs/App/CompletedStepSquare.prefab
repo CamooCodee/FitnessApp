@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 466852812142476882}
   - component: {fileID: 224043290909905972}
   - component: {fileID: 7420314696675817933}
-  - component: {fileID: 7262143151907000852}
+  - component: {fileID: 4803564464156832702}
   m_Layer: 5
   m_Name: StepIcon
   m_TagString: Untagged
@@ -76,7 +76,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &7262143151907000852
+--- !u!114 &4803564464156832702
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -85,13 +85,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2846801921981719371}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6cae41fe6e84291962640177a4fcb76, type: 3}
+  m_Script: {fileID: 11500000, guid: 3cea9b6e15da49afb35a165ef47a47d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  supportedColorSchemes:
-  - colorScheme: {fileID: 11400000, guid: 132a2118153dc8a40b7bafa773337c1f, type: 2}
-    selectedColorIndex: 2
-  selectedSchemeIndex: 0
+  supported:
+  - scheme: {fileID: 11400000, guid: 8d8591d2845da5346b6f72cc78124b8a, type: 2}
+    schemeColorIndex: 2
 --- !u!1 &4566372166646510614
 GameObject:
   m_ObjectHideFlags: 0
@@ -103,7 +102,7 @@ GameObject:
   - component: {fileID: 7449768079447835253}
   - component: {fileID: 5865928623182116470}
   - component: {fileID: 1354212589531123490}
-  - component: {fileID: 8265441295540949656}
+  - component: {fileID: 8779604781333477805}
   m_Layer: 5
   m_Name: StepFill
   m_TagString: Untagged
@@ -151,7 +150,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.34901962, g: 0.37647063, b: 0.39607847, a: 1}
+  m_Color: {r: 0.34901962, g: 0.3764706, b: 0.39607844, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -168,7 +167,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &8265441295540949656
+--- !u!114 &8779604781333477805
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -177,13 +176,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 4566372166646510614}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6cae41fe6e84291962640177a4fcb76, type: 3}
+  m_Script: {fileID: 11500000, guid: 3cea9b6e15da49afb35a165ef47a47d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  supportedColorSchemes:
-  - colorScheme: {fileID: 11400000, guid: 132a2118153dc8a40b7bafa773337c1f, type: 2}
-    selectedColorIndex: 3
-  selectedSchemeIndex: 0
+  supported:
+  - scheme: {fileID: 11400000, guid: 8d8591d2845da5346b6f72cc78124b8a, type: 2}
+    schemeColorIndex: 3
 --- !u!1 &8047406215460253097
 GameObject:
   m_ObjectHideFlags: 0
@@ -195,8 +193,8 @@ GameObject:
   - component: {fileID: 3804859109633882537}
   - component: {fileID: 645509126357179515}
   - component: {fileID: 1381245569692625458}
-  - component: {fileID: 319089609266681260}
   - component: {fileID: 773464738641469517}
+  - component: {fileID: 6920945137325993185}
   m_Layer: 5
   m_Name: CompletedStepSquare
   m_TagString: Untagged
@@ -263,22 +261,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &319089609266681260
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8047406215460253097}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6cae41fe6e84291962640177a4fcb76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  supportedColorSchemes:
-  - colorScheme: {fileID: 11400000, guid: 132a2118153dc8a40b7bafa773337c1f, type: 2}
-    selectedColorIndex: 2
-  selectedSchemeIndex: 0
 --- !u!114 &773464738641469517
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -291,3 +273,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1ea2f36cb9444798c8062dedce6b589, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6920945137325993185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8047406215460253097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cea9b6e15da49afb35a165ef47a47d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  supported:
+  - scheme: {fileID: 11400000, guid: 8d8591d2845da5346b6f72cc78124b8a, type: 2}
+    schemeColorIndex: 2

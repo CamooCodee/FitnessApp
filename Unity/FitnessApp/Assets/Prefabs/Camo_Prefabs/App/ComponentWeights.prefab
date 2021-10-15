@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6061281761037953078}
   - component: {fileID: 1386113387099267929}
   - component: {fileID: 3057599656588917932}
-  - component: {fileID: 7921501124361475645}
+  - component: {fileID: 5787710571144304482}
   m_Layer: 5
   m_Name: ComponentDeleteGraphic
   m_TagString: Untagged
@@ -76,7 +76,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &7921501124361475645
+--- !u!114 &5787710571144304482
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -85,13 +85,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 5734173783641333359}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6cae41fe6e84291962640177a4fcb76, type: 3}
+  m_Script: {fileID: 11500000, guid: 3cea9b6e15da49afb35a165ef47a47d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  supportedColorSchemes:
-  - colorScheme: {fileID: 11400000, guid: 132a2118153dc8a40b7bafa773337c1f, type: 2}
-    selectedColorIndex: 1
-  selectedSchemeIndex: 0
+  supported:
+  - scheme: {fileID: 11400000, guid: 8d8591d2845da5346b6f72cc78124b8a, type: 2}
+    schemeColorIndex: 1
 --- !u!1 &6647184414278637075
 GameObject:
   m_ObjectHideFlags: 0
@@ -185,7 +184,7 @@ GameObject:
   - component: {fileID: 8096557246268626072}
   - component: {fileID: 8096557246268626075}
   - component: {fileID: 8096557246268626074}
-  - component: {fileID: 8096557246268626077}
+  - component: {fileID: 8824662970870243498}
   m_Layer: 5
   m_Name: ComponentValue
   m_TagString: Untagged
@@ -350,7 +349,7 @@ MonoBehaviour:
   m_isRichTextEditingAllowed: 0
   m_LineLimit: 0
   m_InputValidator: {fileID: 0}
---- !u!114 &8096557246268626077
+--- !u!114 &8824662970870243498
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -359,13 +358,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 8096557246268626079}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6cae41fe6e84291962640177a4fcb76, type: 3}
+  m_Script: {fileID: 11500000, guid: 3cea9b6e15da49afb35a165ef47a47d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  supportedColorSchemes:
-  - colorScheme: {fileID: 11400000, guid: 132a2118153dc8a40b7bafa773337c1f, type: 2}
-    selectedColorIndex: 0
-  selectedSchemeIndex: 0
+  supported:
+  - scheme: {fileID: 11400000, guid: 8d8591d2845da5346b6f72cc78124b8a, type: 2}
+    schemeColorIndex: 0
 --- !u!1 &8096557246331457529
 GameObject:
   m_ObjectHideFlags: 0
@@ -377,7 +375,7 @@ GameObject:
   - component: {fileID: 8096557246331457526}
   - component: {fileID: 8096557246331457525}
   - component: {fileID: 8096557246331457524}
-  - component: {fileID: 8096557246331457527}
+  - component: {fileID: 1453531473545932451}
   m_Layer: 5
   m_Name: Value
   m_TagString: Untagged
@@ -501,7 +499,7 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &8096557246331457527
+--- !u!114 &1453531473545932451
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -510,13 +508,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 8096557246331457529}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6cae41fe6e84291962640177a4fcb76, type: 3}
+  m_Script: {fileID: 11500000, guid: 3cea9b6e15da49afb35a165ef47a47d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  supportedColorSchemes:
-  - colorScheme: {fileID: 11400000, guid: 132a2118153dc8a40b7bafa773337c1f, type: 2}
-    selectedColorIndex: 6
-  selectedSchemeIndex: 0
+  supported:
+  - scheme: {fileID: 11400000, guid: 8d8591d2845da5346b6f72cc78124b8a, type: 2}
+    schemeColorIndex: 6
 --- !u!1 &8096557246458836604
 GameObject:
   m_ObjectHideFlags: 0
@@ -660,7 +657,7 @@ GameObject:
   - component: {fileID: 8096557246987841103}
   - component: {fileID: 8096557246987841098}
   - component: {fileID: 8096557246987841101}
-  - component: {fileID: 8096557246987841100}
+  - component: {fileID: 4272994392288921841}
   m_Layer: 5
   m_Name: Placeholder
   m_TagString: Untagged
@@ -725,7 +722,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4291742664
-  m_fontColor: {r: 0.7832591, g: 0.7979682, b: 0.809, a: 1}
+  m_fontColor: {r: 0.78431374, g: 0.79607844, b: 0.80784315, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -784,7 +781,7 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &8096557246987841100
+--- !u!114 &4272994392288921841
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -793,13 +790,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 8096557246987841102}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6cae41fe6e84291962640177a4fcb76, type: 3}
+  m_Script: {fileID: 11500000, guid: 3cea9b6e15da49afb35a165ef47a47d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  supportedColorSchemes:
-  - colorScheme: {fileID: 11400000, guid: 132a2118153dc8a40b7bafa773337c1f, type: 2}
-    selectedColorIndex: 7
-  selectedSchemeIndex: 0
+  supported:
+  - scheme: {fileID: 11400000, guid: 8d8591d2845da5346b6f72cc78124b8a, type: 2}
+    schemeColorIndex: 7
 --- !u!1 &8096557247336994534
 GameObject:
   m_ObjectHideFlags: 0
@@ -811,7 +807,7 @@ GameObject:
   - component: {fileID: 8096557247336994535}
   - component: {fileID: 8096557247336994530}
   - component: {fileID: 8096557247336994533}
-  - component: {fileID: 8096557247336994532}
+  - component: {fileID: 6434615029537761394}
   m_Layer: 5
   m_Name: ValueText
   m_TagString: Untagged
@@ -935,7 +931,7 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &8096557247336994532
+--- !u!114 &6434615029537761394
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -944,13 +940,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 8096557247336994534}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6cae41fe6e84291962640177a4fcb76, type: 3}
+  m_Script: {fileID: 11500000, guid: 3cea9b6e15da49afb35a165ef47a47d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  supportedColorSchemes:
-  - colorScheme: {fileID: 11400000, guid: 132a2118153dc8a40b7bafa773337c1f, type: 2}
-    selectedColorIndex: 5
-  selectedSchemeIndex: 0
+  supported:
+  - scheme: {fileID: 11400000, guid: 8d8591d2845da5346b6f72cc78124b8a, type: 2}
+    schemeColorIndex: 5
 --- !u!1 &8096557248009470092
 GameObject:
   m_ObjectHideFlags: 0
@@ -962,7 +957,7 @@ GameObject:
   - component: {fileID: 8096557248009470093}
   - component: {fileID: 8096557248009470088}
   - component: {fileID: 8096557248009470091}
-  - component: {fileID: 8096557248009470090}
+  - component: {fileID: 4509567311594008635}
   m_Layer: 5
   m_Name: ComponentWindow
   m_TagString: Untagged
@@ -1013,7 +1008,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.34901962, g: 0.37647063, b: 0.39607847, a: 1}
+  m_Color: {r: 0.34901962, g: 0.3764706, b: 0.39607844, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1030,7 +1025,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 4
---- !u!114 &8096557248009470090
+--- !u!114 &4509567311594008635
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1039,13 +1034,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 8096557248009470092}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6cae41fe6e84291962640177a4fcb76, type: 3}
+  m_Script: {fileID: 11500000, guid: 3cea9b6e15da49afb35a165ef47a47d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  supportedColorSchemes:
-  - colorScheme: {fileID: 11400000, guid: 132a2118153dc8a40b7bafa773337c1f, type: 2}
-    selectedColorIndex: 3
-  selectedSchemeIndex: 0
+  supported:
+  - scheme: {fileID: 11400000, guid: 8d8591d2845da5346b6f72cc78124b8a, type: 2}
+    schemeColorIndex: 3
 --- !u!1 &8096557248038178621
 GameObject:
   m_ObjectHideFlags: 0
@@ -1057,7 +1051,7 @@ GameObject:
   - component: {fileID: 8096557248038178618}
   - component: {fileID: 8096557248038178617}
   - component: {fileID: 8096557248038178616}
-  - component: {fileID: 8096557248038178619}
+  - component: {fileID: 1578695231697141682}
   m_Layer: 5
   m_Name: ComponentText
   m_TagString: Untagged
@@ -1181,7 +1175,7 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &8096557248038178619
+--- !u!114 &1578695231697141682
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1190,13 +1184,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 8096557248038178621}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6cae41fe6e84291962640177a4fcb76, type: 3}
+  m_Script: {fileID: 11500000, guid: 3cea9b6e15da49afb35a165ef47a47d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  supportedColorSchemes:
-  - colorScheme: {fileID: 11400000, guid: 132a2118153dc8a40b7bafa773337c1f, type: 2}
-    selectedColorIndex: 5
-  selectedSchemeIndex: 0
+  supported:
+  - scheme: {fileID: 11400000, guid: 8d8591d2845da5346b6f72cc78124b8a, type: 2}
+    schemeColorIndex: 5
 --- !u!1 &8096557248103146606
 GameObject:
   m_ObjectHideFlags: 0

@@ -103,7 +103,7 @@ GameObject:
   - component: {fileID: 3523892482302543615}
   - component: {fileID: 3856787232585837721}
   - component: {fileID: 5793803149970768224}
-  - component: {fileID: 5932834014087293625}
+  - component: {fileID: 7214812673636598370}
   m_Layer: 5
   m_Name: StepIcon
   m_TagString: Untagged
@@ -168,7 +168,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &5932834014087293625
+--- !u!114 &7214812673636598370
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -177,13 +177,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1232903148854205414}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6cae41fe6e84291962640177a4fcb76, type: 3}
+  m_Script: {fileID: 11500000, guid: 3cea9b6e15da49afb35a165ef47a47d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  supportedColorSchemes:
-  - colorScheme: {fileID: 11400000, guid: 132a2118153dc8a40b7bafa773337c1f, type: 2}
-    selectedColorIndex: 1
-  selectedSchemeIndex: 0
+  supported:
+  - scheme: {fileID: 11400000, guid: 8d8591d2845da5346b6f72cc78124b8a, type: 2}
+    schemeColorIndex: 1
 --- !u!1 &6427719629492425988
 GameObject:
   m_ObjectHideFlags: 0
@@ -195,8 +194,8 @@ GameObject:
   - component: {fileID: 166750361214124292}
   - component: {fileID: 4497044902554510550}
   - component: {fileID: 2717590483221648031}
-  - component: {fileID: 3670534771780300033}
   - component: {fileID: 1513802098708672460}
+  - component: {fileID: 3514239199298345015}
   m_Layer: 5
   m_Name: CurrentStepSquare
   m_TagString: Untagged
@@ -263,22 +262,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &3670534771780300033
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6427719629492425988}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6cae41fe6e84291962640177a4fcb76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  supportedColorSchemes:
-  - colorScheme: {fileID: 11400000, guid: 132a2118153dc8a40b7bafa773337c1f, type: 2}
-    selectedColorIndex: 1
-  selectedSchemeIndex: 0
 --- !u!114 &1513802098708672460
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -291,3 +274,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1ea2f36cb9444798c8062dedce6b589, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3514239199298345015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6427719629492425988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cea9b6e15da49afb35a165ef47a47d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  supported:
+  - scheme: {fileID: 11400000, guid: 8d8591d2845da5346b6f72cc78124b8a, type: 2}
+    schemeColorIndex: 1

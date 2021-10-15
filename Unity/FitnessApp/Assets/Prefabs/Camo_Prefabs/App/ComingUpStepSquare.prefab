@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6682778054819888628}
   - component: {fileID: 7690156544570690039}
   - component: {fileID: 2960055237614088355}
-  - component: {fileID: 5290503271826910489}
+  - component: {fileID: 5836997283222132051}
   m_Layer: 5
   m_Name: StepFill
   m_TagString: Untagged
@@ -76,7 +76,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &5290503271826910489
+--- !u!114 &5836997283222132051
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -85,13 +85,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 324286559457823639}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6cae41fe6e84291962640177a4fcb76, type: 3}
+  m_Script: {fileID: 11500000, guid: 3cea9b6e15da49afb35a165ef47a47d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  supportedColorSchemes:
-  - colorScheme: {fileID: 11400000, guid: 132a2118153dc8a40b7bafa773337c1f, type: 2}
-    selectedColorIndex: 2
-  selectedSchemeIndex: 0
+  supported:
+  - scheme: {fileID: 11400000, guid: 8d8591d2845da5346b6f72cc78124b8a, type: 2}
+    schemeColorIndex: 2
 --- !u!1 &2044287752547491018
 GameObject:
   m_ObjectHideFlags: 0
@@ -103,7 +102,7 @@ GameObject:
   - component: {fileID: 4442101237726052819}
   - component: {fileID: 4090655552548793269}
   - component: {fileID: 6711871167619139148}
-  - component: {fileID: 6852027936223735189}
+  - component: {fileID: 2972176101297513631}
   m_Layer: 5
   m_Name: StepIcon
   m_TagString: Untagged
@@ -168,7 +167,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &6852027936223735189
+--- !u!114 &2972176101297513631
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -177,13 +176,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2044287752547491018}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6cae41fe6e84291962640177a4fcb76, type: 3}
+  m_Script: {fileID: 11500000, guid: 3cea9b6e15da49afb35a165ef47a47d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  supportedColorSchemes:
-  - colorScheme: {fileID: 11400000, guid: 132a2118153dc8a40b7bafa773337c1f, type: 2}
-    selectedColorIndex: 0
-  selectedSchemeIndex: 0
+  supported:
+  - scheme: {fileID: 11400000, guid: 8d8591d2845da5346b6f72cc78124b8a, type: 2}
+    schemeColorIndex: 0
 --- !u!1 &6084709382730256936
 GameObject:
   m_ObjectHideFlags: 0
@@ -195,8 +193,8 @@ GameObject:
   - component: {fileID: 1086080618229007912}
   - component: {fileID: 3686852169712149498}
   - component: {fileID: 2951036595295524275}
-  - component: {fileID: 4589935402080741933}
   - component: {fileID: 4135885630662009758}
+  - component: {fileID: 6039866170209473654}
   m_Layer: 5
   m_Name: ComingUpStepSquare
   m_TagString: Untagged
@@ -263,22 +261,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &4589935402080741933
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6084709382730256936}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6cae41fe6e84291962640177a4fcb76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  supportedColorSchemes:
-  - colorScheme: {fileID: 11400000, guid: 132a2118153dc8a40b7bafa773337c1f, type: 2}
-    selectedColorIndex: 0
-  selectedSchemeIndex: 0
 --- !u!114 &4135885630662009758
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -291,3 +273,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1ea2f36cb9444798c8062dedce6b589, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6039866170209473654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6084709382730256936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cea9b6e15da49afb35a165ef47a47d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  supported:
+  - scheme: {fileID: 11400000, guid: 8d8591d2845da5346b6f72cc78124b8a, type: 2}
+    schemeColorIndex: 0
