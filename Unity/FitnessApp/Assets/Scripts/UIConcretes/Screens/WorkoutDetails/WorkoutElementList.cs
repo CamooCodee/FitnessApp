@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using FitnessApp.UIConcretes.Elements.Exercise;
 using FitnessApp.UIConcretes.Screens.HomeExerciseList;
+using FitnessApp.UICore;
 using FitnessAppAPI;
 using UIConcretes.Elements.Pause;
 using UnityEngine;
@@ -9,7 +10,6 @@ using IWorkoutElement = UIConcretes.Elements.IWorkoutElement;
 
 namespace FitnessApp.UIConcretes.Screens.WorkoutDetails
 {
-    // TODO: Make this WorkoutElementList not ExerciseList and behaviour to support pauses
     public class WorkoutElementList : MainExerciseList, IWorkoutElementList
     {
         private IPauseElementFactory _pauseFactory;
@@ -45,9 +45,10 @@ namespace FitnessApp.UIConcretes.Screens.WorkoutDetails
 
         public void AddExercise(int id)
         {
-            // canReturnNull = true => The user might delete exercises which are in this workout
+            // passing canReturnNull as true => The user might delete exercises which are in this workout
             var data = AppAPI.GetExerciseData(id, true);
             if(data == null) return;
+            if(InfoBar.instance != null) InfoBar.instance.Display($"Added {data.name} to your workout!");
             exerciseFactory.InstantiateElement(data, transform);
             Rebuild();
         }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using FitnessApp.UICore;
 using UnityEngine;
@@ -102,6 +103,25 @@ namespace FitnessApp.UIConcretes.Screens.ExerciseDetails
         }
         
         void ClickComponentDeleteButton(GameObject toDelete)
+        {
+            string componentType = "Component";
+            
+            if(toDelete.TryGetComponent<PerformanceTypeTag>(out var t))
+                    componentType = t.GetPerformanceType().ToString();
+
+            if (ConfirmationPopup.instance == null)
+            {
+                OnDeleteConfirm(toDelete);
+                return;
+            }
+            
+            ConfirmationPopup.instance.PopUp($"Delete {componentType}",
+                "Deleting a component will get rid of all offsets.",
+                null,
+                delegate { OnDeleteConfirm(toDelete); });
+        }
+
+        void OnDeleteConfirm(GameObject toDelete)
         {
             var type = toDelete.GetPerformanceTypeWithTagComponent();
             ShowButtonOfType(type);

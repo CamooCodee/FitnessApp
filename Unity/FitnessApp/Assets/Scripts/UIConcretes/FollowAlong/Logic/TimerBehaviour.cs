@@ -1,26 +1,42 @@
-﻿using FitnessAppAPI;
+﻿using System;
+using FitnessAppAPI;
 using TMPro;
 using UnityEngine;
 
 namespace FitnessApp.UIConcretes.FollowAlong.Logic
 {
+    [RequireComponent(typeof(AudioSource))]
     public class TimerBehaviour : MonoBehaviour, IFollowAlongListener
     {
         [SerializeField] private TextMeshProUGUI timerDisplay;
         
-        
+        private float _prevTime;
         private float _time;
         private float _length;
         
         private bool _isRunning;
+
+        [SerializeField] private AudioClip timerSound;
+        [SerializeField] private AudioClip timerSoundFinal;
+        private AudioSource _audioSource;
         
+        private void Awake()
+        {
+            timerDisplay.Require(this);
+            _audioSource = GetComponent<AudioSource>();
+            _audioSource.Require(this);
+        }
+
         private void Update()
         {
             if(!_isRunning) return;
+            HandleSounds();
             if (_time <= 0) return;
-
-            _time -= Time.deltaTime;
+            
             UpdateDisplay();
+
+            _prevTime = _time;
+            _time -= Time.deltaTime;
         }
 
         public void OnNewElement(IWorkoutDataElement[] elements, int current)
@@ -36,8 +52,11 @@ namespace FitnessApp.UIConcretes.FollowAlong.Logic
             }
 
             _isRunning = true;
+            timerLength = Mathf.Max(1, timerLength);
             _time = timerLength;
             _length = timerLength;
+            _prevTime = timerLength;
+            _nextSound = Mathf.Min(timerLength, 3);
         }
 
         public void ResetListener()
@@ -45,6 +64,20 @@ namespace FitnessApp.UIConcretes.FollowAlong.Logic
             _isRunning = false;
         }
 
+        int _nextSound = 3;
+        
+        void HandleSounds()
+        {
+            if (_time > _nextSound || _prevTime < _nextSound) return;
+
+            if (_nextSound == 0) 
+                _audioSource.PlayOneShot(timerSoundFinal);
+            else
+                _audioSource.PlayOneShot(timerSound);
+            
+            _nextSound--;
+        }
+        
         int GetTimerLength(IWorkoutDataElement element)
         {
             if (element is PauseData pause) return pause.length;

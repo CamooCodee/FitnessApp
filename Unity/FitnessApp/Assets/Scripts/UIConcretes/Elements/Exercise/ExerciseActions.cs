@@ -1,7 +1,7 @@
 ﻿using CustomAttributes;
 using FitnessApp.Domain;
 using FitnessApp.UIConcretes.Screens;
-using FitnessApp.UIConcretes.Screens.ExerciseDetails;
+using FitnessApp.UICore;
 using FitnessApp.UICore.Screens;
 using UnityEngine;
 
@@ -27,10 +27,19 @@ namespace FitnessApp.UIConcretes.Elements.Exercise
             _exerciseEditor = editExerciseScreenLogic as IElementEditor;
             _exerciseEditor.Require(this);
         }
-        
+
+        private int _deleteId;
         public virtual void Delete(int exerciseId)
         {
-            domain.PerformSingleAction().DeleteExercise(exerciseId);
+            _deleteId = exerciseId;
+            ConfirmationPopup.instance.PopUp("Delete Exercise", 
+                "Are you sure you want to delete this exercise?",
+                null,
+                OnDeleteConfirm);
+        }
+        void OnDeleteConfirm()
+        {
+            domain.PerformSingleAction().DeleteExercise(_deleteId);
         }
 
         public virtual void Copy(int exerciseId)

@@ -94,14 +94,18 @@ namespace FitnessApp.UIConcretes.FollowAlong.Logic
             
             _layoutGroup.enabled = false;
 
+            if (_currentSquares.Length == 1)
+            {
+                _currentSquares[0].transform.position = centre.position;
+                yield break;
+            }
             var offset = _currentSquares[1].transform.position - _currentSquares[0].transform.position;
             
             for (var i = 0; i < _currentSquares.Length; i++)
             {
                 var pos = centre.position + i * offset;
                 
-                var t = _currentSquares[i].transform; 
-                t.position = pos;
+                _currentSquares[i].transform.position = pos;
             }
         }
 

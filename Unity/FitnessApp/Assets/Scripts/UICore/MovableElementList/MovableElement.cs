@@ -27,8 +27,8 @@ namespace FitnessApp.UICore.MovableElementList
 
         private void Awake()
         {
-            _debugText = GameObject.Find("TouchDebugDisplay").GetComponent<TextMeshProUGUI>();
-            _debugText.text = "Found: Movable";
+            _debugText = GameObject.Find("TouchDebugDisplay")?.GetComponent<TextMeshProUGUI>();
+            if(_debugText != null) _debugText.text = "Found: Movable";
             GetRequiredComponents();
             SetupParentHandling();
         }
@@ -66,13 +66,13 @@ namespace FitnessApp.UICore.MovableElementList
                 parent = parent.parent;
                 if (parent == null)
                 {
-                    _debugText.text = "Exception";
+                    if(_debugText != null)_debugText.text = "Exception";
                     throw new ArgumentOutOfRangeException($"{nameof(dragParentDistance)}");
                 }
             }
 
             onDragParent = parent;
-            _debugText.text = parent.name;
+            if(_debugText != null)_debugText.text = parent.name;
         }
         
         #endregion

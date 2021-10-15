@@ -48,8 +48,8 @@ namespace UIConcretes.Elements.Workout
         {
             if(followAlongManager == null) return;
 
-            screenSlider.SlideAScreenIn(followAlongScreen);
-            followAlongManager.StartMode(workoutId);
+            if (followAlongManager.StartMode(workoutId)) 
+                screenSlider.SlideAScreenIn(followAlongScreen);
         }
     }
 }

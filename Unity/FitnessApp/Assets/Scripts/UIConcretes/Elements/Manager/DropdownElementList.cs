@@ -28,12 +28,15 @@ namespace UIConcretes.Elements.Manager
             for (var i = 0; i < _elements.Length; i++)
             {
                 var iCopy = i;
-                _elements[i].ListenForOnExpand(delegate { OnDropdownExpand(_elements[iCopy]); });
+                _elements[i].ListenForOnExpand(delegate { OnDropdownExpand(iCopy); });
             }
         }
 
-        void OnDropdownExpand(DropdownElementMono element)
+        void OnDropdownExpand(int dropdownElementIndex)
         {
+            dropdownElementIndex = Mathf.Clamp(dropdownElementIndex, 0, _elements.Length - 1);
+
+            var element = _elements[dropdownElementIndex];
             if(_currentlyExpanded != null && _currentlyExpanded != element) _currentlyExpanded.HideDropdown();
             _currentlyExpanded = element;
         }
