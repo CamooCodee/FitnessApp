@@ -17,6 +17,8 @@ namespace FitnessApp.UIConcretes.Screens.HomeWorkoutList
         private readonly List<WorkoutElement> _currentElements = new List<WorkoutElement>();
         private readonly List<int> _currentElementIds = new List<int>();
 
+        private IWorkoutArraySorter _sorter = new NullSorter();
+        
         private void Awake()
         {
             InitializeElementFactory();
@@ -29,6 +31,18 @@ namespace FitnessApp.UIConcretes.Screens.HomeWorkoutList
         {
             elementFactory = GetComponent<IWorkoutElementFactory>();
             elementFactory.Require(this);
+        }
+        
+        public void UpdateWorkoutElements()
+        {
+            InstantiateElements();
+            Sort();
+            Rebuild();
+        }
+        
+        protected virtual void InstantiateElements()
+        {
+            InstantiateOrUpdateWorkoutElements();
         }
         
         void InstantiateOrUpdateWorkoutElements()
@@ -72,43 +86,27 @@ namespace FitnessApp.UIConcretes.Screens.HomeWorkoutList
             {
                 if(_currentElements[i].Id != id) continue;
                 Destroy(_currentElements[i].gameObject);
+                _currentElements.RemoveAt(i);
             }
-        }
-        
-        void DestroyWorkoutElements()
-        {
-            for (int i = 0; i < _currentElements.Count; i++)
-            {
-                Destroy(_currentElements[i].gameObject);
-            }
-        }
-        
-        public void UpdateWorkoutElements()
-        {
-            InstantiateElements();
-            Rebuild();
         }
 
-        public void RedrawWorkoutElements()
-        {
-            DestroyWorkoutElements();
-            InstantiateElements();
-            Rebuild();
-        }
-        
         protected void Rebuild()
         {
             rebuilder.RebuildUILayout(listRebuildTransform);
-        }
-
-        protected virtual void InstantiateElements()
-        {
-            InstantiateOrUpdateWorkoutElements();
         }
 
         protected WorkoutElement[] GetAllElements()
         {
             return GetComponentsInChildren<WorkoutElement>();
         }
+
+        public void SetSorter(IWorkoutArraySorter sorter)
+        {
+            if(sorter == null) return;
+            _sorter = sorter;
+            Sort();
+        }
+
+        void Sort() => _sorter.Sort(GetAllElements());
     }
 }

@@ -16,6 +16,8 @@ namespace FitnessApp.UIConcretes.Screens.HomeExerciseList
         private readonly List<ExerciseElement> _currentElements = new List<ExerciseElement>();
         private readonly List<int> _currentElementIds = new List<int>();
 
+        private IExerciseArraySorter _sorter = new NullSorter();
+        
         protected virtual void Awake()
         {
             InitializeElementFactory();
@@ -28,6 +30,21 @@ namespace FitnessApp.UIConcretes.Screens.HomeExerciseList
         {
             exerciseFactory = GetComponent<IExerciseElementFactory>();
             exerciseFactory.Require(this);
+        }
+        
+        public void UpdateExerciseElements()
+        {
+            InstantiateElements();
+            Sort();
+            Rebuild();
+        }
+        
+        /// <summary>
+        /// Instantiates the exercises.
+        /// </summary>
+        protected virtual void InstantiateElements()
+        {
+            InstantiateOrUpdateExerciseElements();
         }
         
         void InstantiateOrUpdateExerciseElements()
@@ -76,25 +93,27 @@ namespace FitnessApp.UIConcretes.Screens.HomeExerciseList
             }
         }
 
-        public void UpdateExerciseElements()
-        {
-            InstantiateElements();
-            Rebuild();
-        }
-
         public void Rebuild()
         {
             rebuilder.RebuildUILayout(listRebuildTransform);
         }
 
-        protected virtual void InstantiateElements()
-        {
-            InstantiateOrUpdateExerciseElements();
-        }
-
         protected ExerciseElement[] GetAllElements()
         {
             return GetComponentsInChildren<ExerciseElement>();
+        }
+
+        public void SetSorter(IExerciseArraySorter sorter)
+        {
+            if(sorter == null) return;
+
+            _sorter = sorter;
+            Sort();
+        }
+
+        void Sort()
+        {
+            _sorter.Sort(GetComponentsInChildren<ExerciseElement>());
         }
     }
 }

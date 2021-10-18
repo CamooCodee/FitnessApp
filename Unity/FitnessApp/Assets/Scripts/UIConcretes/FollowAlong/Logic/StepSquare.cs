@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace FitnessApp.UIConcretes.FollowAlong.Logic
@@ -19,13 +20,17 @@ namespace FitnessApp.UIConcretes.FollowAlong.Logic
         private float _timeLeft;
         private float _maxTime = 0.35f;
         
-        private void Awake()
+        public void Awake()
         {
             _border = GetComponent<Image>();
             _icon = transform.GetChild(1).GetComponent<Image>();
             _fill = transform.GetChild(0).GetComponent<Image>();
-        }
 
+            _border.Require(this);
+            _icon.Require(this);
+            _fill.Require(this);
+        }
+        
         void Update()
         {
             if(!_isLerping) return;
@@ -53,7 +58,7 @@ namespace FitnessApp.UIConcretes.FollowAlong.Logic
             GetColorsBySquareGameObject(stepSquarePrefab, out var border, out var icon, out var fill);
             LerpColor(border, icon, fill, animLength);
         }
-
+        
         public void SetIcon(Sprite sprite)
         {
             _icon.sprite = sprite;

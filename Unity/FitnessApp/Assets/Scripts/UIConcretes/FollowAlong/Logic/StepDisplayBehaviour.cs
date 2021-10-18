@@ -22,7 +22,7 @@ namespace FitnessApp.UIConcretes.FollowAlong.Logic
         [Space(20f)]
         [SerializeField] private TextMeshProUGUI stepTextDisplay;
         
-        private StepSquare[] _currentSquares;
+        private StepSquare[] _allCurrentSquares;
 
         private bool _wasInit = false;
         private int _prevCurrent;
@@ -55,18 +55,18 @@ namespace FitnessApp.UIConcretes.FollowAlong.Logic
 
             if (_layoutGroup.enabled) _layoutGroup.enabled = false;
             
-            if(current > 0) _currentSquares[current - 1].SetSquareColorByPrefab(completedSquare, animLength);
-            _currentSquares[current].SetSquareColorByPrefab(currentSquare, animLength);
+            if(current > 0) _allCurrentSquares[current - 1].SetSquareColorByPrefab(completedSquare, animLength);
+            _allCurrentSquares[current].SetSquareColorByPrefab(currentSquare, animLength);
             if(_prevCurrent > current)
-                _currentSquares[_prevCurrent].SetSquareColorByPrefab(comingUpSquare, animLength);
+                _allCurrentSquares[_prevCurrent].SetSquareColorByPrefab(comingUpSquare, animLength);
             
-            var offset = _currentSquares[1].transform.position - _currentSquares[0].transform.position;
+            var offset = _allCurrentSquares[1].transform.position - _allCurrentSquares[0].transform.position;
             
-            for (var i = 0; i < _currentSquares.Length; i++)
+            for (var i = 0; i < _allCurrentSquares.Length; i++)
             {
                 var pos = centre.position + (i - current) * offset;
                 
-                var t = _currentSquares[i].transform;
+                var t = _allCurrentSquares[i].transform;
                 LeanTween.move(t.gameObject, pos, animLength).setEase(easeType);
             }
 
@@ -75,15 +75,21 @@ namespace FitnessApp.UIConcretes.FollowAlong.Logic
 
         void InstantiateSquares(IWorkoutDataElement[] elements)
         {
+            Debug.Log("Instantiate");
             Instantiate(currentSquare, stepSquareHolder);
             
             for (var i = 1; i < elements.Length; i++) 
                 Instantiate(comingUpSquare, stepSquareHolder);
 
-            _currentSquares = stepSquareHolder.GetComponentsInChildren<StepSquare>();
+            _allCurrentSquares = stepSquareHolder.GetComponentsInChildren<StepSquare>();
             
-            for (var i = 0; i < _currentSquares.Length; i++) 
-                _currentSquares[i].SetIcon(GetIconByData(elements[i]));
+            foreach (var square in _allCurrentSquares)
+            {
+                Debug.Log(square.gameObject.name);
+            }
+            
+            for (var i = 0; i < _allCurrentSquares.Length; i++) 
+                _allCurrentSquares[i].SetIcon(GetIconByData(elements[i]));
 
             StartCoroutine(AlignSquares());
         }
@@ -94,18 +100,18 @@ namespace FitnessApp.UIConcretes.FollowAlong.Logic
             
             _layoutGroup.enabled = false;
 
-            if (_currentSquares.Length == 1)
+            if (_allCurrentSquares.Length == 1)
             {
-                _currentSquares[0].transform.position = centre.position;
+                _allCurrentSquares[0].transform.position = centre.position;
                 yield break;
             }
-            var offset = _currentSquares[1].transform.position - _currentSquares[0].transform.position;
+            var offset = _allCurrentSquares[1].transform.position - _allCurrentSquares[0].transform.position;
             
-            for (var i = 0; i < _currentSquares.Length; i++)
+            for (var i = 0; i < _allCurrentSquares.Length; i++)
             {
                 var pos = centre.position + i * offset;
                 
-                _currentSquares[i].transform.position = pos;
+                _allCurrentSquares[i].transform.position = pos;
             }
         }
 

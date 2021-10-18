@@ -17,6 +17,8 @@ namespace FitnessApp.UIConcretes.Elements.Exercise
 
         protected ExerciseData CurrentData { get; private set; }
 
+        public string ExerciseName => CurrentData != null ? CurrentData.name : "ExerciseElement";
+        
         public void SetData(ExerciseData data)
         {
             CurrentData = data ?? throw new ArgumentException("Cannot set data to null!");

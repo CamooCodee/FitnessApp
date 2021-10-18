@@ -96,7 +96,7 @@ namespace UIConcretes.Elements
 
         private void TweenDropdown(float targetY, Action onComplete = null)
         {
-            LeanTween.cancel(gameObject);
+            LeanTween.cancel(gameObject, true);
             LeanTween.size(_rectTransform, new Vector2(_rectTransform.sizeDelta.x, targetY),
                     AnimationLength)
                 .setOnComplete(onComplete)
@@ -104,7 +104,7 @@ namespace UIConcretes.Elements
         }
         private void SnapTweenDropdown(float targetY)
         {
-            LeanTween.cancel(gameObject);
+            LeanTween.cancel(gameObject, false);
             LeanTween.size(_rectTransform, new Vector2(_rectTransform.sizeDelta.x, targetY),
                     0.08f)
                 .setEase(AnimationEaseType);

@@ -17,7 +17,9 @@ namespace UIConcretes.Elements.Workout
         
         protected readonly List<UnityEvent<int>> onBegin = new List<UnityEvent<int>>();
 
-        private DateTime _lastSession = DateTime.MinValue;
+        public DateTime LastSession { get; private set; } = DateTime.MinValue;
+
+        public string WorkoutName { get; private set; }
         
         private void Awake()
         {
@@ -27,7 +29,7 @@ namespace UIConcretes.Elements.Workout
 
         private void OnEnable()
         {
-            UpdateLastSessionDisplay(_lastSession);
+            UpdateLastSessionDisplay(LastSession);
         }
 
         private void Require()
@@ -42,8 +44,9 @@ namespace UIConcretes.Elements.Workout
         {
             Id = data.id;
             nameDisplay.text = data.name;
-            _lastSession = data.lastSession;
-            UpdateLastSessionDisplay(_lastSession);
+            WorkoutName = data.name;
+            LastSession = data.lastSession;
+            UpdateLastSessionDisplay(LastSession);
             exerciseAmountDisplay.text = data.GetExerciseAmount().ToString();
             pauseAmountDisplay.text = data.GetPauseAmount().ToString();
         }

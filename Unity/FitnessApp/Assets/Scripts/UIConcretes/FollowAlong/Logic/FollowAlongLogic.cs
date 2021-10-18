@@ -24,6 +24,7 @@ namespace FitnessApp.UIConcretes.FollowAlong.Logic
 
         public void StartMode(SimpleWorkoutData workout)
         {
+            gameObject.SetActive(true); // Might be inactive due to this being inside of a screen
             _elements = workout.elements.ToArray();
             _currentElement = 0;
             workoutNameDisplay.text = workout.name;

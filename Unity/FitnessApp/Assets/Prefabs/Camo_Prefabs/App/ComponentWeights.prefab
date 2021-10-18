@@ -808,8 +808,9 @@ GameObject:
   - component: {fileID: 8096557247336994530}
   - component: {fileID: 8096557247336994533}
   - component: {fileID: 6434615029537761394}
+  - component: {fileID: 8287168135417288071}
   m_Layer: 5
-  m_Name: ValueText
+  m_Name: Unit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -946,6 +947,18 @@ MonoBehaviour:
   supported:
   - scheme: {fileID: 11400000, guid: 8d8591d2845da5346b6f72cc78124b8a, type: 2}
     schemeColorIndex: 5
+--- !u!114 &8287168135417288071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8096557247336994534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ca36010a99f46c6a7f9a641dc9967f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8096557248009470092
 GameObject:
   m_ObjectHideFlags: 0

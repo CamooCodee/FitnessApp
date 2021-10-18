@@ -1,11 +1,13 @@
-﻿using FitnessApp.UIConcretes.Elements;
+﻿using System;
+using FitnessApp.Setting;
+using FitnessApp.UIConcretes.Elements;
 using FitnessAppAPI;
 using TMPro;
 using UnityEngine;
 
 namespace FitnessApp.UIConcretes.FollowAlong.Logic
 {
-    public class ExerciseDisplayBehaviour : MonoBehaviour, IFollowAlongListener
+    public class ExerciseDisplayBehaviour : MonoBehaviour, IFollowAlongListener, ISettingListener<WeightUnitArgs>
     {
         [SerializeField] private RectTransform timer;
         [SerializeField] private RectTransform timerRect;
@@ -13,6 +15,8 @@ namespace FitnessApp.UIConcretes.FollowAlong.Logic
         
         [SerializeField] private TextMeshProUGUI nameDisplay;
         [SerializeField] private ComponentDisplay[] componentDisplays;
+
+        private string _weightUnit = "-";
 
         private void Awake()
         {
@@ -27,6 +31,9 @@ namespace FitnessApp.UIConcretes.FollowAlong.Logic
                 }
             }
         }
+
+        private void OnEnable() => WeightUnitSetting.Instance.AddListenerForSettingsUpdate(this);
+        private void OnDisable() => WeightUnitSetting.Instance.RemoveListenerForSettingsUpdate(this);
 
         public void OnNewElement(IWorkoutDataElement[] elements, int current)
         {
@@ -58,7 +65,7 @@ namespace FitnessApp.UIConcretes.FollowAlong.Logic
 
                     var postFix = "";
                     if (pType == PerformanceType.Reps) postFix = "Reps";
-                    else if (pType == PerformanceType.Weight) postFix = "kg";
+                    else if (pType == PerformanceType.Weight) postFix = _weightUnit;
 
                     componentIsUsed = true;
                     if(pType != PerformanceType.Time) componentDisplays[i].textDisplay.text =
@@ -80,6 +87,11 @@ namespace FitnessApp.UIConcretes.FollowAlong.Logic
             {
                 componentDisplays[i].displayGameObject.SetActive(true);
             }
+        }
+
+        public void Execute(WeightUnitArgs args)
+        {
+            _weightUnit = args.unit;
         }
     }
 }
